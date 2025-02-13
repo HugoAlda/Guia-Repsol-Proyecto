@@ -9,9 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('favoritos', function (Blueprint $table) {
-            $table->id('id_favoritos');
-            $table->foreignId('id_user')->constrained('usuarios')->onDelete('cascade');
-            $table->foreignId('id_restaurante')->constrained('restaurantes')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('id_users')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_restaurantes')->constrained('restaurantes')->onDelete('cascade');
             $table->timestamps();
         });
     }
