@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('tipo_cocina', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD:ProyectoLaravelRestaurante/database/migrations/2025_02_13_161947_create_tipo_cocina_table.php
+=======
+            $table->string('nombre_tipo', 50);
+            $table->foreignId('id_restaurantes')->constrained('restaurantes')->onDelete('cascade');
+>>>>>>> 341fd7725b20ff9aa3bd069c3d787f637355da8c:ProyectoLaravelRestaurante/database/migrations/0001_01_01_000008_create_tipo_cocina_table.php
             $table->timestamps();
         });
     }
