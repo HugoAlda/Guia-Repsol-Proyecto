@@ -12,15 +12,23 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
+        'username',
         'name',
+        'apellidos_user',
         'email',
+        'email_verified_at',
         'password',
+        'id_roles',
+        'remember_token',
     ];
 
     /**
@@ -44,5 +52,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'id_roles');
+    }
+
+    public function resenas()
+    {
+        return $this->hasMany(Resena::class, 'id_users');
+    }
+
+    public function favoritos()
+    {
+        return $this->hasMany(Favorito::class, 'id_users');
     }
 }

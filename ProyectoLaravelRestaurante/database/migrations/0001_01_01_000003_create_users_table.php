@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Modificar la tabla 'users' para incluir los campos personalizados
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username', 50)->unique();
             $table->string('name', 50);
-            $table->string('apellidos_user', 50); // Campo adicional
+            $table->string('apellidos_user', 50);
             $table->string('email')->unique();
-            $table->string('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('id_rol')->constrained('roles')->onDelete('cascade'); // Campo adicional
+            $table->foreignId('id_roles')->constrained('roles')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
