@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('resenas', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
 <<<<<<< HEAD:ProyectoLaravelRestaurante/database/migrations/2025_02_13_161947_create_resenas_table.php
 =======
+=======
+>>>>>>> c0020c8920b55cadeac6aa7821c91538c8679f3c
             $table->foreignId('id_users')->constrained('users')->onDelete('cascade');
             $table->foreignId('id_restaurantes')->constrained('restaurantes')->onDelete('cascade');
             $table->text('comentario');

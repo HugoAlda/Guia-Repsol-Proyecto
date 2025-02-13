@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('restaurantes', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
 <<<<<<< HEAD:ProyectoLaravelRestaurante/database/migrations/2025_02_13_161946_create_restaurantes_table.php
 =======
+=======
+>>>>>>> c0020c8920b55cadeac6aa7821c91538c8679f3c
             $table->unsignedBigInteger('id_restaurantes');
             $table->string('nombre_restaurante', 100);
             $table->string('ubicacion_restaurante', 191);
