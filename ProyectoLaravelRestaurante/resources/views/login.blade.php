@@ -25,16 +25,13 @@
                     <button class="boton-cambio" onclick="mostrarFormulario('registro')">Registrarse</button>
                 </div>
                 <div class="login-register">
-                    <form id="login-formulario" action="" method="POST">
+                    <form id="login-formulario" class="form-login" action="" method="POST">
                         @csrf
+                        <label>Usuario o correo</label>
                         <input type="email" class="form-control" placeholder="Correo electrónico" name="email" required>
+                        <label>Contraseña</label>
                         <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
                         <button type="submit" class="btn-primary">Iniciar Sesión</button>
-                        <a href="#" class="enlace">Olvidé mi contraseña</a>
-                        <a href="#" class="enlace">¿No tienes una cuenta?</a>
-                        @if ($errors->has('email') || $errors->has('password'))
-                            <p class="mensaje-error">Error en el login, intente nuevamente.</p>
-                        @endif
                     </form>
                     <form id="registro-formulario" action="" method="POST">
                         @csrf
