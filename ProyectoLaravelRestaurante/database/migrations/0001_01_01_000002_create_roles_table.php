@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_roles');
             $table->string('nombre_rol', 50)->unique();
             $table->timestamps();
         });
