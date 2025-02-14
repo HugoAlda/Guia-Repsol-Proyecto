@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía Repsol 2024</title>
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/guiaRepsol.css') }}">
 </head>
+
 <body>
     <nav class="navbar">
-        <div class="container">
-            <a class="logo" href="#">Guía Repsol</a>
+        <div class="containerLogo">
+            <img src="{{ asset('img/logoGuiaRepsol.png') }}" alt="Logo Guía Repsol">
             <a class="btn-access" href="#">Acceso</a>
         </div>
     </nav>
-    
+
     <div class="container">
-        <h2>Descubre los galardonados con Estrellas Guía Repsol de 2024</h2>
+        <h2 class="titulo">Descubre los galardonados con Estrellas Guía Repsol de 2024</h2>
         <div class="filters">
             <button class="filter-btn">5 Estrellas</button>
             <button class="filter-btn">4 Estrellas</button>
@@ -23,61 +25,29 @@
             <button class="filter-btn">2 Estrellas</button>
             <button class="filter-btn">1 Estrella</button>
         </div>
-        
-        <div class="restaurant-category">
-            <h3>⭐ 5 Estrellas 2024</h3>
-            <div class="restaurant-card">
-                <img src="{{ asset('images/aponiente.jpg') }}" alt="Aponiente">
-                <div class="info">
-                    <h5>Aponiente - 310€</h5>
-                    <p>Puerto de Santa María, Andalucía</p>
+
+        <!-- Bucle para mostrar restaurantes por categoría -->
+        @foreach ($restaurants->groupBy('nombre_restaurante') as $categoria => $restaurantesCategoria)
+            <div class="restaurant-category">
+                <div class="category-info">
+                    <h3>⭐ {{ $categoria }} Estrellas 2024</h3>
+                    <h5 class="comunidad">Andalucía</h5> <!-- Puedes hacer esto dinámico también -->
+                </div>
+                <div class="restaurant-cards-container">
+                    @foreach ($restaurantesCategoria as $restaurante)
+                        <div class="restaurant-card">
+                            <img src="{{ asset('img/' . $restaurante->imagen) }}" alt="{{ $restaurante->nombre }}">
+                            <div class="info">
+                                <h5>{{ $restaurante->nombre }} - {{ $restaurante->precio }}€</h5>
+                                <p>{{ $restaurante->ubicacion }}</p>
+                                <h3>{{ str_repeat('⭐', $restaurante->estrellas) }}</h3>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-        
-        <div class="restaurant-category">
-            <h3>⭐ 4 Estrellas 2024</h3>
-            <div class="restaurant-card">
-                <img src="{{ asset('images/la_costa.jpg') }}" alt="La Costa">
-                <div class="info">
-                    <h5>La Costa - 150€</h5>
-                    <p>El Ejido, Andalucía</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="restaurant-category">
-            <h3>⭐ 3 Estrellas 2024</h3>
-            <div class="restaurant-card">
-                <img src="{{ asset('images/moments.jpg') }}" alt="Moments">
-                <div class="info">
-                    <h5>Moments - 220€</h5>
-                    <p>Barcelona, Cataluña</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="restaurant-category">
-            <h3>⭐ 2 Estrellas 2024</h3>
-            <div class="restaurant-card">
-                <img src="{{ asset('images/casa_lucio.jpg') }}" alt="Casa Lucio">
-                <div class="info">
-                    <h5>Casa Lucio - 80€</h5>
-                    <p>Madrid, Comunidad de Madrid</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="restaurant-category">
-            <h3>⭐ 1 Estrella 2024</h3>
-            <div class="restaurant-card">
-                <img src="{{ asset('images/xera_restaurant.jpg') }}" alt="Xera Restaurant">
-                <div class="info">
-                    <h5>Xera Restaurant - 50€</h5>
-                    <p>Barcelona, Cataluña</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </body>
+
 </html>
