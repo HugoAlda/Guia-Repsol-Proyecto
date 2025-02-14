@@ -1,0 +1,77 @@
+/* public/css/styles.css */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('../img/background.png');
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center center; /* Centra la imagen tanto horizontal como verticalmente */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Mantiene la imagen fija mientras se desplaza la página */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fondo-difuminado {
+    background-color: #669cff88; /* Color difuminado */
+    width: 100%;
+    height: 100%; /* Ocupa toda la altura del body */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    overflow: hidden; /* Evita que se genere una barra de desplazamiento */
+}
+
+.form {
+    background-color: #0b1741a6;
+    display: flex;
+    flex-direction: row; /* Divide el formulario en dos columnas */
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    height: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-izquierda {
+    background-color: blue;
+    width: 50%;
+    height: 100%;
+}
+
+.contenedor-izquierda>h1{
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}
+
+.contenedor-derecha {
+    width: 50%;
+    height: 100%;
+    flex: 1; /* Ocupa el 50% del espacio disponible */
+    display: flex;
+    flex-direction: column; /* Divide el contenedor en dos filas */
+    align-items: stretch; /* Hace que los hijos se estiren para ocupar toda la altura */
+}
+
+.cambio {
+    background-color: yellow;
+    height: 15%;
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.login-register {
+    background-color: green;
+    height: 85%;
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
