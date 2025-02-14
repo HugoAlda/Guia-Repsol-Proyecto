@@ -44,9 +44,20 @@ body {
 }
 
 .contenedor-izquierda {
-    background-color: blue;
+    /* background-color: blue; */
     width: 50%;
     height: 100%;
+}
+
+.contenedor-izquierda>p{
+    color: white;
+    padding-left: 45px;
+}
+
+.contenedor-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contenedor-izquierda>h1{
@@ -68,6 +79,37 @@ body {
     background-color: yellow;
     height: 15%;
     box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.boton-cambio {
+    background: none; /* Quita el fondo */
+    border: none; /* Quita el borde */
+    color: #007bff; /* Color del texto */
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.boton-cambio:hover::after {
+    width: 100%; /* La línea se expande al 100% al hacer hover */
+}
+
+.boton-cambio::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Posición de la línea debajo del texto */
+    width: 0;
+    height: 2px; /* Grosor de la línea */
+    background-color: #007bff; /* Color de la línea */
+    transition: width 0.3s ease;
+}
+
+.boton-cambio.active::after {
+    width: 100%; /* La línea está siempre visible para el botón activo */
 }
 
 .login-register {
