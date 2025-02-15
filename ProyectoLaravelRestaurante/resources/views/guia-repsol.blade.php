@@ -26,27 +26,25 @@
             <button class="filter-btn">1 Estrella</button>
         </div>
 
-        <!-- Bucle para mostrar restaurantes por categoría -->
-        @foreach ($restaurants->groupBy('nombre_restaurante') as $categoria => $restaurantesCategoria)
-            <div class="restaurant-category">
-                <div class="category-info">
-                    <h3>⭐ {{ $categoria }} Estrellas 2024</h3>
-                    <h5 class="comunidad">Andalucía</h5> <!-- Puedes hacer esto dinámico también -->
-                </div>
-                <div class="restaurant-cards-container">
-                    @foreach ($restaurantesCategoria as $restaurante)
-                        <div class="restaurant-card">
-                            <img src="{{ asset('img/' . $restaurante->imagen) }}" alt="{{ $restaurante->nombre }}">
-                            <div class="info">
-                                <h5>{{ $restaurante->nombre }} - {{ $restaurante->precio }}€</h5>
-                                <p>{{ $restaurante->ubicacion }}</p>
-                                <h3>{{ str_repeat('⭐', $restaurante->estrellas) }}</h3>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+        <!-- Contenedor principal para mostrar todos los restaurantes -->
+        <div class="restaurant-category">
+            <div class="category-info">
+                <h3>⭐ Estrellas 2024</h3>
+                <h5 class="comunidad">Andalucía</h5> <!-- Puedes hacer esto dinámico también -->
             </div>
-        @endforeach
+            <div class="restaurant-cards-container">
+                @foreach ($restaurants as $restaurante)
+                    <div class="restaurant-card">
+                        <img src="{{ asset('img/' . $restaurante->imagen) }}" alt="{{ $restaurante->nombre_restaurante }}">
+                        <div class="info">
+                            <h5>{{ $restaurante->nombre_restaurante }} - {{ $restaurante->precio_restaurante }}€</h5>
+                            <p>{{ $restaurante->ubicacion_restaurante }}</p>
+                            <h3>{{ str_repeat('⭐', $restaurante->estrellas_restaurante) }}</h3>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 </body>
 
