@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('valoracion_media', 3, 2)->default(0);
             $table->string('img_restaurante')->nullable();
             $table->string('nombre_gerente', 50)->nullable();
-            $table->string('email_gerente', 100)->unique()->nullable();
+            $table->string('email_gerente', 100)->nullable();
             $table->timestamps();
         });
     }
