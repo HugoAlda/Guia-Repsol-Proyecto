@@ -35,7 +35,7 @@
             <div class="restaurant-cards-container">
                 @foreach ($restaurants as $restaurante)
                     <div class="restaurant-card">
-                        <img src="{{ asset('img/' . $restaurante->imagen) }}" alt="{{ $restaurante->nombre_restaurante }}">
+                        <img src="{{ asset('img/' . $restaurante->img_restaurante) }}" alt="{{ $restaurante->nombre_restaurante }}">
                         <div class="info">
                             <h5>{{ $restaurante->nombre_restaurante }} - {{ $restaurante->precio_restaurante }}€</h5>
                             <p>{{ $restaurante->ubicacion_restaurante }}</p>
