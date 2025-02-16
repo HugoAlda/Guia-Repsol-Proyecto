@@ -25,13 +25,16 @@
                     <button class="boton-cambio" onclick="mostrarFormulario('registro')">Registrarse</button>
                 </div>
                 <div class="login-register">
-                    <form id="login-formulario" class="form-login" action="" method="POST">
+                    <form id="login-formulario" class="form-login" action="{{ route('login') }}" method="POST">
                         @csrf
-                        <label>Usuario o correo</label>
+                        <label>Correo</label>
                         <input type="email" class="form-control" placeholder="Correo electrónico" name="email" required>
                         <label>Contraseña</label>
                         <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
                         <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                        @if ($errors->has('email') || $errors->has('password'))
+                            <p class="mensaje-error">{{ $errors->first('email') ?: $errors->first('password') }}</p>
+                        @endif
                     </form>
                     <form id="registro-formulario" action="" method="POST">
                         @csrf

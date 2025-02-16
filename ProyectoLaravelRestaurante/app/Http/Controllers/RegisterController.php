@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
+    public function register()
+    {
+        return view('auth.register');
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -24,7 +28,7 @@ class RegisterController extends Controller
         }
 
         $user = User::create([
-            'username' => $request->name . '.' . $request->apellidos_user,
+            'username' => strtolower($request->name . '.' . $request->apellidos_user),
             'name' => $request->name,
             'apellidos_user' => $request->apellidos_user,
             'email' => $request->email,
@@ -34,8 +38,8 @@ class RegisterController extends Controller
             'remember_token' => \Illuminate\Support\Str::random(10),
         ]);
 
-        Auth::login($user);
+        AuthController::login($user);
 
-        return redirect()->intended('dashboard');
+        return redirect()->intended('/guia-repsol');
     }
 }

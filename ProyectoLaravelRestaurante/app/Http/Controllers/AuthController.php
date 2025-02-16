@@ -8,34 +8,36 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-
-    public function authenticate(Request $request)
+    public function showLoginForm()
     {
-        $credentials = $request->validate([
-            'username' => 'required',
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        return view('auth.login'); // Asegúrate de que la ruta sea correcta
+    }
+
+    public function login(Request $request)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        // Intentar autenticar al usuario
+        if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-
-            return redirect()->intended('guia-repsol');
+            return redirect()->intended('/guia-repsol'); // Redirige a la página de Guía Repsol
         }
 
+        // Si la autenticación falla, redirige de vuelta con un mensaje de error
         return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
-        ])->onlyInput('email');
+            'email' => 'Las credenciales no coinciden con nuestros registros.',
+        ]);
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/login');
     }
 }
