@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RestauranteController;
+use App\Http\Controllers\ResenaController;
 
 // Ruta para la página de login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -20,3 +21,5 @@ Route::middleware(['auth'])->group(function () {
 
 // Ruta para el logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
