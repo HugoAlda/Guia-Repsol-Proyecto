@@ -14,54 +14,43 @@ class TipoCocinaSeeder extends Seeder
     public function run(): void
     {
         TipoCocina::create([
-            'nombre_tipo' => 'Italiana',
-            'id_restaurantes' => 1,
+            'nombre_tipo' => 'Italiana'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'Mexicana',
-            'id_restaurantes' => 2,
+            'nombre_tipo' => 'Mexicana'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'Arabe',
-            'id_restaurantes' => 3,
+            'nombre_tipo' => 'Arabe'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'Española',
-            'id_restaurantes' => 4,
+            'nombre_tipo' => 'Española'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'Inglesa',
-            'id_restaurantes' => 5,
+            'nombre_tipo' => 'Inglesa'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'Japonesa',
-            'id_restaurantes' => 6,
+            'nombre_tipo' => 'Japonesa'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'Francesa',
-            'id_restaurantes' => 7,
+            'nombre_tipo' => 'Francesa'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'China',
-            'id_restaurantes' => 8,
+            'nombre_tipo' => 'China'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'Estadounidense',
-            'id_restaurantes' => 9,
+            'nombre_tipo' => 'Estadounidense'
         ]);
 
         TipoCocina::create([
-            'nombre_tipo' => 'Tailandesa',
-            'id_restaurantes' => 10,
+            'nombre_tipo' => 'Tailandesa'
         ]);
-
     }
 }

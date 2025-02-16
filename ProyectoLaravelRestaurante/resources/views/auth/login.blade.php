@@ -32,30 +32,57 @@
                     <form id="login-formulario" class="form-login" action="{{ route('login') }}" method="POST">
                         @csrf
                         <label>Correo</label>
-                        <input type="email" class="form-control" placeholder="Correo electrónico" name="email" required>
+                        <input type="text" class="form-control" placeholder="Correo electrónico" name="email">
+                        @if ($errors->has('email'))
+                            <p class="mensaje-error">{{ $errors->first('email') }}</p>
+                        @endif
+                        
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
+                        <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                        @if ($errors->has('password'))
+                            <p class="mensaje-error">{{ $errors->first('password') }}</p>
+                        @endif
+                        
                         <button type="submit" class="btn-primary">Iniciar Sesión</button>
-                        @if ($errors->has('email') || $errors->has('password'))
-                            <p class="mensaje-error">{{ $errors->first('email') ?: $errors->first('password') }}</p>
-                        @endif
                     </form>
-                    <form id="registro-formulario" class="form-login" action="" method="POST">
+                    <form id="registro-formulario" class="form-login" action="{{ route('register') }}" method="POST">
                         @csrf
+                        <label>Usuario</label>
+                        <input type="text" class="form-control" placeholder="Usuario" name="username">
+                        @error('username')
+                            <p class="mensaje-error">{{ $message }}</p>
+                        @enderror
                         <label>Nombre</label>
-                        <input type="text" class="form-control" placeholder="Nombre" name="name" required>
+                        <input type="text" class="form-control" placeholder="Nombre" name="name">
+                        @error('name')
+                            <p class="mensaje-error">{{ $message }}</p>
+                        @enderror
+
                         <label>Apellido</label>
-                        <input type="text" class="form-control" placeholder="Apellido" name="apellidos_user" required>
+                        <input type="text" class="form-control" placeholder="Apellido" name="apellidos_user">
+                        @error('apellidos_user')
+                            <p class="mensaje-error">{{ $message }}</p>
+                        @enderror
+
                         <label>Correo electrónico</label>
-                        <input type="email" class="form-control" placeholder="Correo electrónico" name="email" required>
+                        <input type="text" class="form-control" placeholder="Correo electrónico" name="email">
+                        @error('email')
+                            <p class="mensaje-error">{{ $message }}</p>
+                        @enderror
+
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
+                        <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                        @error('password')
+                            <p class="mensaje-error">{{ $message }}</p>
+                        @enderror
+
                         <label>Confirmar contraseña</label>
-                        <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password_confirmation" required>
+                        <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password_confirmation">
+                        @error('password_confirmation')
+                            <p class="mensaje-error">{{ $message }}</p>
+                        @enderror
+
                         <button type="submit" class="btn-primary">Registrarse</button>
-                        @if ($errors->has('name') || $errors->has('apellidos_user') || $errors->has('email') || $errors->has('password'))
-                            <p class="mensaje-error">Error en el registro, intente nuevamente.</p>
-                        @endif
                     </form>
                 </div>
             </div>
