@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Restaurante;
@@ -62,4 +63,5 @@ class AdminController extends Controller
         return redirect()->route('restaurantes.index')
                          ->with('success', 'Restaurante eliminado exitosamente.');
     }
+
 }

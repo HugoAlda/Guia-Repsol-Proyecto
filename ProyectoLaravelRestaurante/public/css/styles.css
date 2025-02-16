@@ -155,6 +155,13 @@ body {
     align-items: center;
 }
 
+.registro-izq, .registro-der {
+    width: 50%; /* 50% menos un poco de espacio para separación */
+    display: flex;
+    flex-direction: column; /* Campos de entrada en columna */
+    align-items: center;
+}
+
 .form-login label {
     margin-bottom: 5px;
     font-weight: bold;
