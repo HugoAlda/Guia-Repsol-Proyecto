@@ -44,15 +44,30 @@ body {
 }
 
 .contenedor-izquierda {
-    background-color: blue;
+    /* background-color: blue; */
     width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.contenedor-izquierda>h1{
+.contenedor-izquierda > p {
+    color: white;
+    padding-left: 45px;
+}
+
+.contenedor-izquierda > h1 {
     color: white;
     font-size: 36px;
     text-align: center;
+}
+
+.contenedor-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contenedor-derecha {
@@ -65,13 +80,135 @@ body {
 }
 
 .cambio {
-    background-color: yellow;
     height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
 }
 
+.cambio-izq, .cambio-der {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start; /* Alinea el botón a la izquierda */
+    align-items: center;
+}
+
+.cambio-der {
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+}
+
+.boton-cambio {
+    background: none; /* Quita el fondo */
+    border: none; /* Quita el borde */
+    color: white; /* Color del texto por defecto */
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 100%; /* Misma anchura que los inputs */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.boton-cambio:hover::after {
+    width: 100%; /* La línea se expande al 100% al hacer hover */
+}
+
+.boton-cambio::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Posición de la línea debajo del texto */
+    width: 0;
+    height: 2px; /* Grosor de la línea */
+    background-color: #007bff; /* Color de la línea */
+    transition: width 0.3s ease;
+}
+
+.boton-cambio.active {
+    color: #007bff; /* Color del texto cuando está activo */
+}
+
+.boton-cambio.active::after {
+    width: 100%; /* La línea está siempre visible para el botón activo */
+}
+
 .login-register {
-    background-color: green;
+    /* background-color: green; */
     height: 85%;
     box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos específicos para el formulario de login */
+.form-login {
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px; /* Ancho máximo del formulario */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-login label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.form-login input[type="email"],
+.form-login input[type="password"],
+.form-login input[type="text"] {
+    width: 94%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-login input[type="email"]:focus,
+.form-login input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.form-login button {
+    width: 100%;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-login button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.form-login .enlace {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.form-login .enlace:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.form-login .mensaje-error {
+    color: red;
+    margin-top: 10px;
+    font-size: 0.9rem;
 }

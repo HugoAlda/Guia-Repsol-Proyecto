@@ -20,6 +20,7 @@ class Restaurante extends Model
         'horario_restaurante',
         'precio_restaurante',
         'valoracion_media',
+        'imagen_restaurante',
         'nombre_gerente',
         'email_gerente',
     ];

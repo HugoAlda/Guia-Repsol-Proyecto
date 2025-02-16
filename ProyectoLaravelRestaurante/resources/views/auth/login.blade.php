@@ -6,67 +6,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <title>Login</title>
-    <style>
-        /* Estilos adicionales para los botones */
-        .boton-cambio {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .boton-cambio:hover {
-            background-color: #0056b3;
-        }
-
-        .enlace {
-            color: #007bff;
-            text-decoration: none;
-            margin-top: 10px;
-            display: block;
-        }
-
-        .enlace:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
     <div class="fondo-difuminado">
         <div class="form">
             <div class="contenedor-izquierda">
-                <h1 class="titulo">Login Guia Repsol</h1>
+                <br>
+                <h1 class="titulo">¡Bienvenido a la Guía Repsol!</h1>
+                <p>En este video explicamos básicamente que es lo que ofrecemos y que ventajas puedes obtener.</p>
+                <br>
+                <div class="contenedor-video">
+                    <a href="https://youtu.be/cR395YajkeM"><img src="{{ asset('img/video.png') }}" alt="Video Guía Repsol"></a>
+                </div>
             </div>
             <div class="contenedor-derecha">
                 <div class="cambio">
-                    <button class="boton-cambio" onclick="mostrarFormulario('login')">Iniciar sesión</button>
-                    <button class="boton-cambio" onclick="mostrarFormulario('registro')">Registrarse</button>
+                    <div class="cambio-der">
+                        <button class="boton-cambio active" id="login-button" onclick="mostrarFormulario('login')">Iniciar sesión</button>
+                    </div>
+                    <div class="cambio-izq">
+                        <button class="boton-cambio" id="registro-button" onclick="mostrarFormulario('registro')">Registrarse</button>
+                    </div>
                 </div>
                 <div class="login-register">
-                    <form id="login-formulario" action="" method="POST">
+                    <form id="login-formulario" class="form-login" action="{{ route('login') }}" method="POST">
                         @csrf
+                        <label>Correo</label>
                         <input type="email" class="form-control" placeholder="Correo electrónico" name="email" required>
+                        <label>Contraseña</label>
                         <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
                         <button type="submit" class="btn-primary">Iniciar Sesión</button>
-                        <a href="#" class="enlace">Olvidé mi contraseña</a>
-                        <a href="#" class="enlace">¿No tienes una cuenta?</a>
                         @if ($errors->has('email') || $errors->has('password'))
-                            <p class="mensaje-error">Error en el login, intente nuevamente.</p>
+                            <p class="mensaje-error">{{ $errors->first('email') ?: $errors->first('password') }}</p>
                         @endif
                     </form>
-                    <form id="registro-formulario" action="" method="POST">
+                    <form id="registro-formulario" class="form-login" action="" method="POST">
                         @csrf
+                        <label>Nombre</label>
                         <input type="text" class="form-control" placeholder="Nombre" name="name" required>
+                        <label>Apellido</label>
                         <input type="text" class="form-control" placeholder="Apellido" name="apellidos_user" required>
+                        <label>Correo electrónico</label>
                         <input type="email" class="form-control" placeholder="Correo electrónico" name="email" required>
+                        <label>Contraseña</label>
                         <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
+                        <label>Confirmar contraseña</label>
                         <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password_confirmation" required>
                         <button type="submit" class="btn-primary">Registrarse</button>
-                        <a href="#" class="enlace">¿Ya tienes una cuenta?</a>
                         @if ($errors->has('name') || $errors->has('apellidos_user') || $errors->has('email') || $errors->has('password'))
                             <p class="mensaje-error">Error en el registro, intente nuevamente.</p>
                         @endif
@@ -75,18 +61,23 @@
             </div>
         </div>
     </div>
-
     <script>
         function mostrarFormulario(tipo) {
             const loginFormulario = document.getElementById('login-formulario');
             const registroFormulario = document.getElementById('registro-formulario');
+            const loginButton = document.getElementById('login-button');
+            const registroButton = document.getElementById('registro-button');
 
             if (tipo === 'login') {
                 loginFormulario.style.display = 'block';
                 registroFormulario.style.display = 'none';
+                loginButton.classList.add('active');
+                registroButton.classList.remove('active');
             } else if (tipo === 'registro') {
                 loginFormulario.style.display = 'none';
                 registroFormulario.style.display = 'block';
+                loginButton.classList.remove('active');
+                registroButton.classList.add('active');
             }
         }
 

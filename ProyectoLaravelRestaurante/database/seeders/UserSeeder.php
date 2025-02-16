@@ -14,11 +14,11 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'username' => 'Administrador',
-            'name' => 'admin',
-            'apellidos_user' => 'Administrador',
-            'email' => 'admin@fje.edu',
-            'password' => bcrypt('secret'),
+            'username' => 'delta',
+            'name' => 'Hugo',
+            'apellidos_user' => 'Alda',
+            'email' => 'hugo.alda@gmail.com',
+            'password' => bcrypt('qweQWE123@'),
             'id_roles' => 1,
             'remember_token' => null,
         ]);
@@ -28,7 +28,27 @@ class UserSeeder extends Seeder
             'name' => 'Marc',
             'apellidos_user' => 'Martinez',
             'email' => 'marc@fje.edu',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('qweQWE123@'),
+            'id_roles' => 2,
+            'remember_token' => null,
+        ]);
+
+        User::create([
+            'username' => 'alejandro',
+            'name' => 'Alejandro',
+            'apellidos_user' => 'Gonzalez',
+            'email' => 'alejandro@fje.edu',
+            'password' => bcrypt('qweQWE123@'),
+            'id_roles' => 2,
+            'remember_token' => null,
+        ]);
+
+        User::create([
+            'username' => 'prysma',
+            'name' => 'Erik',
+            'apellidos_user' => 'Peñas',
+            'email' => 'erik@fje.edu',
+            'password' => bcrypt('qweQWE123@'),
             'id_roles' => 2,
             'remember_token' => null,
         ]);
