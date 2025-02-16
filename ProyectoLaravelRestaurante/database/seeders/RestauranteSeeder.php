@@ -24,8 +24,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'arzak.jpg',
                 'nombre_gerente' => 'Juan Mari Arzak',
                 'email_gerente' => 'info@arzak.es',
-                'id_comunidad_autonoma' => 1,
-                'id_provincia' => 1,
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 23,
             ],
             [
                 'nombre_restaurante' => 'El Celler de Can Roca',
@@ -37,6 +37,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_celler_de_can_roca.jpg',
                 'nombre_gerente' => 'Joan Roca',
                 'email_gerente' => 'info@cellercanroca.com',
+                'id_comunidad_autonoma' => 9,
+                'id_provincia' => 20
             ],
             [
                 'nombre_restaurante' => 'DiverXO',
@@ -48,6 +50,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'diverxo.jpg',
                 'nombre_gerente' => 'Dabiz Muñoz',
                 'email_gerente' => 'info@diverxo.com',
+                'id_comunidad_autonoma' => 15,
+                'id_provincia' => 30
             ],
             [
                 'nombre_restaurante' => 'Aponiente',
@@ -59,6 +63,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'aponiente.jpg',
                 'nombre_gerente' => 'Ángel León',
                 'email_gerente' => 'info@aponiente.com',
+                'id_comunidad_autonoma' => 1,
+                'id_provincia' => 12
             ],
             [
                 'nombre_restaurante' => 'Azurmendi',
@@ -70,6 +76,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'azurmendi.jpg',
                 'nombre_gerente' => 'Eneko Atxa',
                 'email_gerente' => 'info@azurmendi.com',
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 50
             ],
             [
                 'nombre_restaurante' => 'Quique Dacosta',
@@ -81,6 +89,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'quique_dacosta.jpg',
                 'nombre_gerente' => 'Quique Dacosta',
                 'email_gerente' => 'info@quiquedacosta.com',
+                'id_comunidad_autonoma' => 11,
+                'id_provincia' => 3
             ],
             [
                 'nombre_restaurante' => 'Martín Berasategui',
@@ -92,6 +102,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'martin_berasategui.jpg',
                 'nombre_gerente' => 'Martín Berasategui',
                 'email_gerente' => 'info@martinberasategui.com',
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 23
             ],
             [
                 'nombre_restaurante' => 'Sant Pau',
@@ -103,6 +115,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'sant_pau.jpg',
                 'nombre_gerente' => 'Carme Ruscalleda',
                 'email_gerente' => 'info@santpau.com',
+                'id_comunidad_autonoma' => 9,
+                'id_provincia' => 9
             ],
             [
                 'nombre_restaurante' => 'Mugaritz',
@@ -114,6 +128,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'mugaritz.jpg',
                 'nombre_gerente' => 'Andoni Luis Aduriz',
                 'email_gerente' => 'info@mugaritz.com',
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 23,
             ],
             [
                 'nombre_restaurante' => 'Casa Marcial',
@@ -125,6 +141,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'casa_marcial.jpg',
                 'nombre_gerente' => 'Nacho Manzano',
                 'email_gerente' => 'info@casamarcial.com',
+                'id_comunidad_autonoma' => 3,
+                'id_provincia' => 5,
             ],
             [
                 'nombre_restaurante' => 'Cenador de Amós',
@@ -136,6 +154,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'cenador_de_amos.jpg',
                 'nombre_gerente' => 'Jesús Sánchez',
                 'email_gerente' => 'info@cenadordeamos.com',
+                'id_comunidad_autonoma' => 6,
+                'id_provincia' => 13,
             ],
             [
                 'nombre_restaurante' => 'Akelarre',
@@ -147,6 +167,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'akelarre.jpg',
                 'nombre_gerente' => 'Pedro Subijana',
                 'email_gerente' => 'info@akelarre.net',
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 23,
             ],
             [
                 'nombre_restaurante' => 'Etxebarri',
@@ -158,6 +180,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'etxebarri.jpg',
                 'nombre_gerente' => 'Bittor Arginzoniz',
                 'email_gerente' => 'info@etxebarri.com',
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 50,
             ],
             [
                 'nombre_restaurante' => 'Elkano',
@@ -169,6 +193,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'elkano.jpg',
                 'nombre_gerente' => 'Aitor Arregi',
                 'email_gerente' => 'info@elkano.com',
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 23,
             ],
             [
                 'nombre_restaurante' => 'Abac',
@@ -180,6 +206,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'abac.jpg',
                 'nombre_gerente' => 'Jordi Cruz',
                 'email_gerente' => 'info@abac.com',
+                'id_comunidad_autonoma' => 9,
+                'id_provincia' => 9,
             ],
             [
                 'nombre_restaurante' => 'El Bohío',
@@ -191,6 +219,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_bohio.jpg',
                 'nombre_gerente' => 'Pepe Rodríguez',
                 'email_gerente' => 'info@elbohio.com',
+                'id_comunidad_autonoma' => 7,
+                'id_provincia' => 47,
             ],
             [
                 'nombre_restaurante' => 'Coque',
@@ -202,6 +232,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'coque.jpg',
                 'nombre_gerente' => 'Mario Sandoval',
                 'email_gerente' => 'info@coque.com',
+                'id_comunidad_autonoma' => 15,
+                'id_provincia' => 30,
             ],
             [
                 'nombre_restaurante' => 'El Portal de Echaurren',
@@ -213,6 +245,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_portal_de_echaurren.jpg',
                 'nombre_gerente' => 'Francis Paniego',
                 'email_gerente' => 'info@echaurren.com',
+                'id_comunidad_autonoma' => 14,
+                'id_provincia' => 39,
             ],
             [
                 'nombre_restaurante' => 'El Invernadero',
@@ -224,6 +258,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_invernadero.jpg',
                 'nombre_gerente' => 'Rodrigo de la Calle',
                 'email_gerente' => 'info@elinvernadero.com',
+                'id_comunidad_autonoma' => 15,
+                'id_provincia' => 30,
             ],
             [
                 'nombre_restaurante' => 'El Poblet',
@@ -235,6 +271,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_poblet.jpg',
                 'nombre_gerente' => 'Luis Valls',
                 'email_gerente' => 'info@elpoblet.com',
+                'id_comunidad_autonoma' => 11,
+                'id_provincia' => 48,
             ],
             [
                 'nombre_restaurante' => 'El Rincón de Juan Carlos',
@@ -246,6 +284,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_rincon_de_juan_carlos.jpg',
                 'nombre_gerente' => 'Juan Carlos Padrón',
                 'email_gerente' => 'info@elrincondejuancarlos.com',
+                'id_comunidad_autonoma' => 5,
+                'id_provincia' => 41,
             ],
             [
                 'nombre_restaurante' => 'El Serbal',
@@ -257,6 +297,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_serbal.jpg',
                 'nombre_gerente' => 'Rafael Prieto',
                 'email_gerente' => 'info@elserbal.com',
+                'id_comunidad_autonoma' => 6,
+                'id_provincia' => 13,
             ],
             [
                 'nombre_restaurante' => 'Solana',
@@ -268,6 +310,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'solana.jpg',
                 'nombre_gerente' => 'Nacho Solana',
                 'email_gerente' => 'info@eltaller.com',
+                'id_comunidad_autonoma' => 6,
+                'id_provincia' => 13,
             ],
             [
                 'nombre_restaurante' => 'El Trigo',
@@ -279,6 +323,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_trigo.jpg',
                 'nombre_gerente' => 'Javier Rodríguez',
                 'email_gerente' => 'info@eltrigo.com',
+                'id_comunidad_autonoma' => 8,
+                'id_provincia' => 27,
             ],
             [
                 'nombre_restaurante' => 'El Txoko',
@@ -290,6 +336,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_txoko.jpg',
                 'nombre_gerente' => 'Aitor Elizegi',
                 'email_gerente' => 'info@eltxoko.com',
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 50,
             ],
             [
                 'nombre_restaurante' => 'El Ventorrillo',
@@ -301,6 +349,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_ventorrillo.jpg',
                 'nombre_gerente' => 'José Luis García',
                 'email_gerente' => 'info@elventorrillo.com',
+                'id_comunidad_autonoma' => 1,
+                'id_provincia' => 12,
             ],
             [
                 'nombre_restaurante' => 'El Zaguán',
@@ -312,6 +362,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'el_zaguan.jpg',
                 'nombre_gerente' => 'Fernando Pérez',
                 'email_gerente' => 'info@elzaguan.com',
+                'id_comunidad_autonoma' => 8,
+                'id_provincia' => 10,
             ],
             [
                 'nombre_restaurante' => 'Eneko',
@@ -323,6 +375,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'eneko.jpg',
                 'nombre_gerente' => 'Eneko Atxa',
                 'email_gerente' => 'info@eneko.com',
+                'id_comunidad_autonoma' => 19,
+                'id_provincia' => 50,
             ],
             [
                 'nombre_restaurante' => 'Es Fum',
@@ -334,6 +388,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'es_fum.jpg',
                 'nombre_gerente' => 'Miguel Navarro',
                 'email_gerente' => 'info@esfum.com',
+                'id_comunidad_autonoma' => 4,
+                'id_provincia' => 8,
             ],
             [
                 'nombre_restaurante' => 'Fonda Sala',
@@ -345,6 +401,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'fonda_sala.jpg',
                 'nombre_gerente' => 'Toni Sala',
                 'email_gerente' => 'info@fondasala.com',
+                'id_comunidad_autonoma' => 9,
+                'id_provincia' => 20,
             ],
             [
                 'nombre_restaurante' => 'Gresca',
@@ -356,6 +414,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'gresca.jpg',
                 'nombre_gerente' => 'Rafa Peña',
                 'email_gerente' => 'info@gresca.com',
+                'id_comunidad_autonoma' => 9,
+                'id_provincia' => 9,
             ],
             [
                 'nombre_restaurante' => 'Hofmann',
@@ -367,6 +427,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'hofmann.jpg',
                 'nombre_gerente' => 'Mey Hofmann',
                 'email_gerente' => 'info@hofmann.com',
+                'id_comunidad_autonoma' => 9,
+                'id_provincia' => 9,
             ],
             [
                 'nombre_restaurante' => 'Kaleja',
@@ -378,6 +440,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'kaleja.jpg',
                 'nombre_gerente' => 'Dani Carnero',
                 'email_gerente' => 'info@kaleja.com',
+                'id_comunidad_autonoma' => 1,
+                'id_provincia' => 33,
             ],
             [
                 'nombre_restaurante' => 'Kiro Sushi',
@@ -389,6 +453,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'kiro_sushi.jpg',
                 'nombre_gerente' => 'Félix Jiménez',
                 'email_gerente' => 'info@kirosushi.com',
+                'id_comunidad_autonoma' => 14,
+                'id_provincia' => 39,
             ],
             [
                 'nombre_restaurante' => 'La Boscana',
@@ -400,6 +466,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'la_boscana.jpg',
                 'nombre_gerente' => 'Joel Castanyé',
                 'email_gerente' => 'info@laboscana.com',
+                'id_comunidad_autonoma' => 9,
+                'id_provincia' => 29,
             ],
             [
                 'nombre_restaurante' => 'La Cabaña',
@@ -411,6 +479,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'la_cabana.jpg',
                 'nombre_gerente' => 'Pablo González',
                 'email_gerente' => 'info@lacabanamurcia.com',
+                'id_comunidad_autonoma' => 17,
+                'id_provincia' => 33,
             ],
             [
                 'nombre_restaurante' => 'La Finca',
@@ -422,6 +492,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'la_finca.jpg',
                 'nombre_gerente' => 'Susi Díaz',
                 'email_gerente' => 'info@lafinca.com',
+                'id_comunidad_autonoma' => 11,
+                'id_provincia' => 3,
             ],
             [
                 'nombre_restaurante' => 'La Salita',
@@ -433,6 +505,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'la_salita.jpg',
                 'nombre_gerente' => 'Begoña Rodrigo',
                 'email_gerente' => 'info@lasalita.com',
+                'id_comunidad_autonoma' => 11,
+                'id_provincia' => 48,
             ],
             [
                 'nombre_restaurante' => 'Lúa',
@@ -444,6 +518,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'lua.jpg',
                 'nombre_gerente' => 'Manuel Domínguez',
                 'email_gerente' => 'info@lua.com',
+                'id_comunidad_autonoma' => 15,
+                'id_provincia' => 30,
             ],
             [
                 'nombre_restaurante' => 'Maralba',
@@ -455,6 +531,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'maralba.jpg',
                 'nombre_gerente' => 'Fran Martínez',
                 'email_gerente' => 'info@maralba.com',
+                'id_comunidad_autonoma' => 7,
+                'id_provincia' => 2,
             ],
             [
                 'nombre_restaurante' => 'Monastrell',
@@ -466,6 +544,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'monastrell.jpg',
                 'nombre_gerente' => 'María José San Román',
                 'email_gerente' => 'info@monastrell.com',
+                'id_comunidad_autonoma' => 11,
+                'id_provincia' => 3,
             ],
             [
                 'nombre_restaurante' => 'Noor',
@@ -477,6 +557,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'noor.jpg',
                 'nombre_gerente' => 'Paco Morales',
                 'email_gerente' => 'info@noor.com',
+                'id_comunidad_autonoma' => 1,
+                'id_provincia' => 17,
             ],
             [
                 'nombre_restaurante' => 'Orobianco',
@@ -488,6 +570,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'orobianco.jpg',
                 'nombre_gerente' => 'Enrico Croatti',
                 'email_gerente' => 'info@orobianco.com',
+                'id_comunidad_autonoma' => 11,
+                'id_provincia' => 3,
             ],
             [
                 'nombre_restaurante' => 'Pepe Vieira',
@@ -499,6 +583,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'pepe_vieira.jpg',
                 'nombre_gerente' => 'Xosé Cannas',
                 'email_gerente' => 'info@pepevieira.com',
+                'id_comunidad_autonoma' => 13,
+                'id_provincia' => 38,
             ],
             [
                 'nombre_restaurante' => 'Ricard Camarena',
@@ -510,6 +596,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'ricard_camarena.jpg',
                 'nombre_gerente' => 'Ricard Camarena',
                 'email_gerente' => 'info@ricardcamarena.com',
+                'id_comunidad_autonoma' => 11,
+                'id_provincia' => 48,
             ],
             [
                 'nombre_restaurante' => 'Rodero',
@@ -521,6 +609,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'rodero.jpg',
                 'nombre_gerente' => 'Koldo Rodero',
                 'email_gerente' => 'info@rodero.com',
+                'id_comunidad_autonoma' => 18,
+                'id_provincia' => 34,
             ],
             [
                 'nombre_restaurante' => 'Sollo',
@@ -532,6 +622,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'sollo.jpg',
                 'nombre_gerente' => 'Diego Gallegos',
                 'email_gerente' => 'info@sollo.com',
+                'id_comunidad_autonoma' => 1,
+                'id_provincia' => 31,
             ],
             [
                 'nombre_restaurante' => 'Via Veneto',
@@ -543,6 +635,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'via_veneto.jpg',
                 'nombre_gerente' => 'Javier Oliveira',
                 'email_gerente' => 'info@viaveneto.com',
+                'id_comunidad_autonoma' => 9,
+                'id_provincia' => 9,
             ],
             [
                 'nombre_restaurante' => 'Tatau',
@@ -554,6 +648,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'tatau.jpg',
                 'nombre_gerente' => 'Tonino Valiente',
                 'email_gerente' => 'info@tatau.com',
+                'id_comunidad_autonoma' => 2,
+                'id_provincia' => 25,
             ],
             [
                 'nombre_restaurante' => 'Trivio',
@@ -565,6 +661,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'trivio.jpg',
                 'nombre_gerente' => 'Jesús Segura',
                 'email_gerente' => 'info@trivio.com',
+                'id_comunidad_autonoma' => 7,
+                'id_provincia' => 19,
             ],
             [
                 'nombre_restaurante' => 'Zaranda',
@@ -576,6 +674,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'zaranda.jpg',
                 'nombre_gerente' => 'Fernando P. Arellano',
                 'email_gerente' => 'info@zaranda.com',
+                'id_comunidad_autonoma' => 7,
+                'id_provincia' => 47,
             ]
         ];
 
