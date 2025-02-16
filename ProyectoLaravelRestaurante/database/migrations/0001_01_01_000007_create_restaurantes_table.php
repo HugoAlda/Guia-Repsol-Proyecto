@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('img_restaurante')->nullable();
             $table->string('nombre_gerente', 50)->nullable();
             $table->string('email_gerente', 100)->nullable();
+            $table->foreignId('id_comunidad_autonoma')->constrained('comunidad_autonoma')->onDelete('cascade');
+            $table->foreignId('id_provincia')->constrained('provincia')->onDelete('cascade');
             $table->timestamps();
         });
     }
