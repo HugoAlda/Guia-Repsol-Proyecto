@@ -47,23 +47,27 @@ body {
     /* background-color: blue; */
     width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.contenedor-izquierda>p{
+.contenedor-izquierda > p {
     color: white;
     padding-left: 45px;
+}
+
+.contenedor-izquierda > h1 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
 }
 
 .contenedor-video {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.contenedor-izquierda>h1{
-    color: white;
-    font-size: 36px;
-    text-align: center;
 }
 
 .contenedor-derecha {
@@ -77,19 +81,35 @@ body {
 
 .cambio {
     height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.cambio-izq, .cambio-der {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start; /* Alinea el botón a la izquierda */
+    align-items: center;
+}
+
+.cambio-der {
+    justify-content: flex-end; /* Alinea el botón a la derecha */
 }
 
 .boton-cambio {
     background: none; /* Quita el fondo */
     border: none; /* Quita el borde */
-    color: #007bff; /* Color del texto */
+    color: white; /* Color del texto por defecto */
     font-size: 1rem;
     cursor: pointer;
     padding: 10px 20px;
     position: relative;
     text-decoration: none;
     transition: all 0.3s ease;
+    width: 100%; /* Misma anchura que los inputs */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
 }
 
 .boton-cambio:hover::after {
@@ -107,14 +127,21 @@ body {
     transition: width 0.3s ease;
 }
 
+.boton-cambio.active {
+    color: #007bff; /* Color del texto cuando está activo */
+}
+
 .boton-cambio.active::after {
     width: 100%; /* La línea está siempre visible para el botón activo */
 }
 
 .login-register {
-    background-color: green;
+    /* background-color: green; */
     height: 85%;
     box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilos específicos para el formulario de login */
@@ -131,12 +158,13 @@ body {
 .form-login label {
     margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
+    color: white;
 }
 
 .form-login input[type="email"],
-.form-login input[type="password"] {
-    width: 50%;
+.form-login input[type="password"],
+.form-login input[type="text"] {
+    width: 94%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
