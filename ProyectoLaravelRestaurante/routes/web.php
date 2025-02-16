@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RestauranteController;
+use App\Http\Controllers\ResenaController;
+use App\Http\Controllers\AdminController;
 
 // Página de login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -21,8 +23,20 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rutas protegidas por autenticación (solo para usuarios autenticados)
 Route::middleware(['auth'])->group(function () {
+    // Ruta para el panel de administración
+    Route::get('/admin', function () {
+        return view('admin');
+    })->name('admin');
+
+    // Rutas del CRUD de restaurantes
+    Route::resource('restaurantes', AdminController::class);
+});
+
+// Rutas protegidas por autenticación (solo para usuarios autenticados)
+Route::middleware(['auth'])->group(function () {
     Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
 });
 
 // Ruta para el logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
