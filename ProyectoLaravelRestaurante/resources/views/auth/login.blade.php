@@ -46,43 +46,49 @@
                         <button type="submit" class="btn-primary">Iniciar Sesión</button>
                     </form>
                     <form id="registro-formulario" class="form-login" action="{{ route('register') }}" method="POST">
-                        <div class="registro-izq">
-                            @csrf
-                            <label>Usuario</label>
-                            <input type="text" class="form-control" placeholder="Usuario" name="username">
-                            @error('username')
-                                <p class="mensaje-error">{{ $message }}</p>
-                            @enderror
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" placeholder="Nombre" name="name">
-                            @error('name')
-                                <p class="mensaje-error">{{ $message }}</p>
-                            @enderror
-    
-                            <label>Apellido</label>
-                            <input type="text" class="form-control" placeholder="Apellido" name="apellidos_user">
-                            @error('apellidos_user')
-                                <p class="mensaje-error">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="registro-der">
-                            <label>Correo electrónico</label>
-                            <input type="text" class="form-control" placeholder="Correo electrónico" name="email">
-                            @error('email')
-                                <p class="mensaje-error">{{ $message }}</p>
-                            @enderror
-    
-                            <label>Contraseña</label>
-                            <input type="password" class="form-control" placeholder="Contraseña" name="password">
-                            @error('password')
-                                <p class="mensaje-error">{{ $message }}</p>
-                            @enderror
-    
-                            <label>Confirmar contraseña</label>
-                            <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password_confirmation">
-                            @error('password_confirmation')
-                                <p class="mensaje-error">{{ $message }}</p>
-                            @enderror
+                        @csrf
+                        <div class="contenedor-columnas">
+                            <!-- Columna Izquierda -->
+                            <div class="registro-izq">
+                                <label>Usuario</label>
+                                <input type="text" class="form-control" placeholder="Usuario" name="username">
+                                @error('username')
+                                    <p class="mensaje-error">{{ $message }}</p>
+                                @enderror
+                    
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" placeholder="Nombre" name="name">
+                                @error('name')
+                                    <p class="mensaje-error">{{ $message }}</p>
+                                @enderror
+                    
+                                <label>Apellido</label>
+                                <input type="text" class="form-control" placeholder="Apellido" name="apellidos_user">
+                                @error('apellidos_user')
+                                    <p class="mensaje-error">{{ $message }}</p>
+                                @enderror
+                            </div>
+                    
+                            <!-- Columna Derecha -->
+                            <div class="registro-der">
+                                <label>Correo electrónico</label>
+                                <input type="text" class="form-control" placeholder="Correo electrónico" name="email">
+                                @error('email')
+                                    <p class="mensaje-error">{{ $message }}</p>
+                                @enderror
+                    
+                                <label>Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                                @error('password')
+                                    <p class="mensaje-error">{{ $message }}</p>
+                                @enderror
+                    
+                                <label>Confirmar contraseña</label>
+                                <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password_confirmation">
+                                @error('password_confirmation')
+                                    <p class="mensaje-error">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
                         <button type="submit" class="btn-primary">Registrarse</button>
                     </form>

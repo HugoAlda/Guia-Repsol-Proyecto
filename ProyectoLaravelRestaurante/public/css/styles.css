@@ -149,29 +149,41 @@ body {
     padding: 30px;
     border-radius: 10px;
     width: 100%;
-    max-width: 400px; /* Ancho máximo del formulario */
+    max-width: 800px; /* Aumentamos el ancho máximo para permitir dos columnas */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.registro-izq, .registro-der {
-    width: 50%; /* 50% menos un poco de espacio para separación */
+/* Contenedor de las columnas */
+.contenedor-columnas {
     display: flex;
-    flex-direction: column; /* Campos de entrada en columna */
-    align-items: center;
+    justify-content: space-between; /* Espacio entre las columnas */
+    gap: 20px; /* Espaciado entre las columnas */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    margin-bottom: 20px; /* Espacio debajo del contenedor */
 }
 
+/* Estilos para cada columna */
+.registro-izq, .registro-der {
+    width: 48%; /* Cada columna ocupa aproximadamente la mitad del ancho */
+    display: flex;
+    flex-direction: column; /* Campos de entrada en columna */
+    align-items: flex-start; /* Alinea los elementos a la izquierda */
+}
+
+/* Labels */
 .form-login label {
     margin-bottom: 5px;
     font-weight: bold;
     color: white;
 }
 
+/* Inputs */
 .form-login input[type="email"],
 .form-login input[type="password"],
 .form-login input[type="text"] {
-    width: 94%;
+    width: 96%; /* Los inputs ocupan el 100% del ancho de su columna */
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -185,6 +197,7 @@ body {
     outline: none;
 }
 
+/* Botón */
 .form-login button {
     width: 100%;
     background-color: #007bff;
@@ -201,6 +214,7 @@ body {
     border-color: #0056b3;
 }
 
+/* Enlace */
 .form-login .enlace {
     color: #007bff;
     text-decoration: none;
@@ -214,6 +228,7 @@ body {
     color: #0056b3;
 }
 
+/* Mensaje de error */
 .form-login .mensaje-error {
     color: red;
     margin-top: 10px;
