@@ -26,6 +26,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Ruta para el panel de administración
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
-// Ruta para el logout
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Ruta para la reseña
 Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
+
+// Rutas para validación de AJAX
+Route::post('/validate/email', [AuthController::class, 'validateEmail'])->name('validate.email');
+Route::post('/validate/password', [AuthController::class, 'validatePassword'])->name('validate.password');

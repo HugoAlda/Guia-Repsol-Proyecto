@@ -7,6 +7,39 @@ body {
     overflow-x: hidden; /* Elimina la barra de desplazamiento horizontal */
 }
 
+.btn-logout {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff; /* Texto blanco */
+    text-align: center;
+    vertical-align: middle;
+    background-color: #dc3545; /* Color rojo de Bootstrap */
+    border: 1px solid transparent; /* Sin borde visible */
+    padding: 0.375rem 0.75rem; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño de fuente */
+    line-height: 1.5; /* Altura de línea */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Efecto hover (al pasar el ratón) */
+.btn-logout:hover {
+    background-color: #c82333; /* Color más oscuro al pasar el ratón */
+    border-color: #bd2130; /* Borde más oscuro */
+}
+
+/* Efecto focus (al hacer clic o enfocar) */
+.btn-logout:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5); /* Sombra de enfoque */
+}
+
+/* Efecto active (al presionar el botón) */
+.btn-logout:active {
+    background-color: #bd2130; /* Color aún más oscuro al presionar */
+    border-color: #a71d2a; /* Borde más oscuro */
+}
+
 /* Navbar */
 .containerLogo {
     display: flex;
@@ -17,6 +50,24 @@ body {
     background-color: #ffcc00;
     padding: 0 15px;
     box-sizing: border-box; /* Asegura que padding no afecte el ancho */
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: #0B1741;
+    font-size: 0.9rem;
+}
+
+.user-info span:first-child {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.user-info span:last-child {
+    font-size: 0.8rem;
+    opacity: 0.8;
 }
 
 .navbar {

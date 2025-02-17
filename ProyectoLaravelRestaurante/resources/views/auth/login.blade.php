@@ -29,20 +29,16 @@
                     </div>
                 </div>
                 <div class="login-register">
-                    <form id="login-formulario" class="form-login" action="{{ route('login') }}" method="POST">
+                    <form id="login-formulario" class="form-login" action="{{ route('login') }}" method="POST" onsubmit="return validarFormulario(event)">
                         @csrf
                         <label>Correo</label>
-                        <input type="text" class="form-control" placeholder="Correo electrónico" name="email">
-                        @if ($errors->has('email'))
-                            <p class="mensaje-error">{{ $errors->first('email') }}</p>
-                        @endif
-                        
+                        <input type="text" class="form-control" placeholder="Correo electrónico" name="email" id="email">
+                        <span id="error-email" class="mensaje-error"></span>
+
                         <label>Contraseña</label>
-                        <input type="password" class="form-control" placeholder="Contraseña" name="password">
-                        @if ($errors->has('password'))
-                            <p class="mensaje-error">{{ $errors->first('password') }}</p>
-                        @endif
-                        
+                        <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
+                        <span id="error-password" class="mensaje-error"></span>
+
                         <button type="submit" class="btn-primary">Iniciar Sesión</button>
                     </form>
                     <form id="registro-formulario" class="form-login" action="{{ route('register') }}" method="POST">
@@ -51,43 +47,31 @@
                             <!-- Columna Izquierda -->
                             <div class="registro-izq">
                                 <label>Usuario</label>
-                                <input type="text" class="form-control" placeholder="Usuario" name="username">
-                                @error('username')
-                                    <p class="mensaje-error">{{ $message }}</p>
-                                @enderror
-                    
+                                <input type="text" class="form-control" placeholder="Usuario" name="username" id="username">
+                                <span id="error-username" class="mensaje-error"></span>
+
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre" name="name">
-                                @error('name')
-                                    <p class="mensaje-error">{{ $message }}</p>
-                                @enderror
-                    
+                                <input type="text" class="form-control" placeholder="Nombre" name="name" id="name">
+                                <span id="error-name" class="mensaje-error"></span>
+
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" placeholder="Apellido" name="apellidos_user">
-                                @error('apellidos_user')
-                                    <p class="mensaje-error">{{ $message }}</p>
-                                @enderror
+                                <input type="text" class="form-control" placeholder="Apellido" name="apellidos_user" id="apellidos_user">
+                                <span id="error-apellidos_user" class="mensaje-error"></span>
                             </div>
-                    
+
                             <!-- Columna Derecha -->
                             <div class="registro-der">
                                 <label>Correo electrónico</label>
-                                <input type="text" class="form-control" placeholder="Correo electrónico" name="email">
-                                @error('email')
-                                    <p class="mensaje-error">{{ $message }}</p>
-                                @enderror
-                    
+                                <input type="text" class="form-control" placeholder="Correo electrónico" name="email" id="email-register">
+                                <span id="error-email-register" class="mensaje-error"></span>
+
                                 <label>Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña" name="password">
-                                @error('password')
-                                    <p class="mensaje-error">{{ $message }}</p>
-                                @enderror
-                    
+                                <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password-register">
+                                <span id="error-password-register" class="mensaje-error"></span>
+
                                 <label>Confirmar contraseña</label>
-                                <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password_confirmation">
-                                @error('password_confirmation')
-                                    <p class="mensaje-error">{{ $message }}</p>
-                                @enderror
+                                <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password_confirmation" id="password_confirmation">
+                                <span id="error-password_confirmation" class="mensaje-error"></span>
                             </div>
                         </div>
                         <button type="submit" class="btn-primary">Registrarse</button>
@@ -96,6 +80,8 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function mostrarFormulario(tipo) {
             const loginFormulario = document.getElementById('login-formulario');
@@ -118,6 +104,47 @@
 
         // Mostrar el formulario de login por defecto
         mostrarFormulario('login');
+
+        // Validación AJAX del correo y la contraseña
+        $(document).ready(function() {
+            $('#email').on('blur', function() {
+                var email = $(this).val();
+                $.ajax({
+                    url: '{{ route("validate.email") }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        email: email
+                    },
+                    success: function(response) {
+                        if(response.error) {
+                            $('#error-email').text(response.error);
+                        } else {
+                            $('#error-email').text('');
+                        }
+                    }
+                });
+            });
+
+            $('#password').on('blur', function() {
+                var password = $(this).val();
+                $.ajax({
+                    url: '{{ route("validate.password") }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        password: password
+                    },
+                    success: function(response) {
+                        if(response.error) {
+                            $('#error-password').text(response.error);
+                        } else {
+                            $('#error-password').text('');
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
