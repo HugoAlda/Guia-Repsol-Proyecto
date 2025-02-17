@@ -46,16 +46,18 @@
                         <h4 class="community-title">{{ $comunidad }}</h4>
                         <div class="restaurant-cards-container">
                             @foreach ($restaurantes as $restaurante)
-                                <div class="restaurant-card">
-                                    <img src="{{ asset('img/logos_restaurantes/' . $restaurante->img_restaurante) }}" alt="{{ $restaurante->nombre_restaurante }}">
-                                    <div class="info">
-                                        <h5>{{ $restaurante->nombre_restaurante }}</h5>
-                                        <p>{{ $restaurante->ubicacion_restaurante }}</p>
-                                        <br>
-                                        <h5>{{ $restaurante->precio_restaurante }}€</h5>
-                                        <h3>{{ str_repeat('⭐', $restaurante->valoracion_media) }}</h3>
+                                <a href="{{ route('resena', ['id' => $restaurante->id]) }}" class="restaurant-link">
+                                    <div class="restaurant-card">
+                                        <img src="{{ asset('img/logos_restaurantes/' . $restaurante->img_restaurante) }}" alt="{{ $restaurante->nombre_restaurante }}">
+                                        <div class="info">
+                                            <h5>{{ $restaurante->nombre_restaurante }}</h5>
+                                            <p>{{ $restaurante->ubicacion_restaurante }}</p>
+                                            <br>
+                                            <h5>{{ $restaurante->precio_restaurante }}€</h5>
+                                            <h3>{{ str_repeat('⭐', $restaurante->valoracion_media) }}</h3>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
