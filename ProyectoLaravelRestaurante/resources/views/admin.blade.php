@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Bienvenido Administrador</h1>
-        <a href="" class="btn btn-primary mb-3">Crear Nuevo Restaurante</a>
+        <a href="{{route('create')}}" class="btn btn-primary mb-3">Crear Nuevo Restaurante</a>
         <div class="row">
             @foreach ($restaurantes as $restaurante)
                 @if ($restaurantes->isNotEmpty())
