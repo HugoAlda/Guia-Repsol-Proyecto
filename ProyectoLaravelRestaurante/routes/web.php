@@ -17,15 +17,27 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Ruta para usuarios normales (Guía Repsol)
 Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
+// Route::get('/restaurante/{id}', [RestauranteController::class, 'show'])->name('resena');
+Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
+
+// Ruta para crear una nueva reseña
+// Route::post('/resena', [ResenaController::class,'store'])->name('resena');
+
+// // Ruta para editar una reseña
+// Route::put('/resena/{id}', [ResenaController::class,'update'])->name('resena');
+
+// // Ruta para eliminar una reseña
+// Route::delete('/resena/{id}', [ResenaController::class,'destroy'])->name('resena');
+
+// // Ruta para ver una reseña
+// Route::get('/resena/{id}', [ResenaController::class,'show'])->name('resena');
 
 // Ruta para cerrar sesión
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Rutas protegidas por autenticación (solo para usuarios autenticados)
 
 // Ruta para el panel de administración
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 // Ruta para el logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
+Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
