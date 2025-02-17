@@ -10,7 +10,7 @@
     <nav class="navbar">
         <div class="containerLogo">
             <img src="{{ asset('img/logoGuiaRepsol.png') }}" alt="Logo Guía Repsol">
-        
+
             <!-- Verificar si el usuario está autenticado -->
             @if (auth()->check())
                 <!-- Mostrar el nombre y correo del usuario -->
@@ -29,10 +29,62 @@
             @endif
         </div>
     </nav>
-    
+
+    <!-- Barra de Filtros -->
+    <div class="filter-bar">
+        <form action="{{ route('guia-repsol') }}" method="GET" class="filter-form">
+            <!-- Filtro por nombre -->
+            <div class="filter-group">
+                <label for="nombre">Buscar por nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="{{ request('nombre') }}" placeholder="Ej: Restaurante...">
+            </div>
+
+            <!-- Filtro por tipo de cocina -->
+            <div class="filter-group">
+                <label>Tipo de cocina:</label>
+                {{-- @foreach ($tiposCocina as $tipo)
+                    <label>
+                        <input type="checkbox" name="cocina[]" value="{{ $tipo }}" 
+                            {{ in_array($tipo, request('cocina', [])) ? 'checked' : '' }}>
+                        {{ $tipo }}
+                    </label>
+                @endforeach --}}
+            </div>
+
+            <!-- Filtro por valoraciones -->
+            <div class="filter-group">
+                <label>Valoraciones:</label>
+                @for ($i = 1; $i <= 5; $i++)
+                    <label>
+                        <input type="checkbox" name="valoracion[]" value="{{ $i }}" 
+                            {{ in_array($i, request('valoracion', [])) ? 'checked' : '' }}>
+                        {{ str_repeat('⭐', $i) }}
+                    </label>
+                @endfor
+            </div>
+
+            <!-- Filtro por comunidades autónomas -->
+            <div class="filter-group">
+                <label>Comunidades Autónomas:</label>
+                <select name="comunidad[]" id="comunidad" multiple>
+                    @foreach ($comunidadesAutonomas as $id => $nombre)
+                        <option value="{{ $id }}" 
+                            {{ in_array($id, request('comunidad', [])) ? 'selected' : '' }}>
+                            {{ $nombre }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Botón de búsqueda -->
+            <button type="submit" class="btn-filter">Filtrar</button>
+        </form>
+    </div>
+
+    <!-- Contenido Principal -->
     <div class="container">
         <h2 class="titulo">Descubre los galardonados con Estrellas Guía Repsol de 2024</h2>
-        
+
         <!-- Mostrar restaurantes agrupados por estrellas y comunidad -->
         @foreach ($restaurantesAgrupados as $range => $comunidades)
             <div class="rating-section">

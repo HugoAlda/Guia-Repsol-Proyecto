@@ -33,12 +33,16 @@
                         @csrf
                         <label>Correo</label>
                         <input type="text" class="form-control" placeholder="Correo electrónico" name="email" id="email">
-                        <span id="error-email" class="mensaje-error"></span>
-
+                        @error('email')
+                            <span class="mensaje-error">{{ $message }}</span>
+                        @enderror
+                        <br><br>
                         <label>Contraseña</label>
                         <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password">
-                        <span id="error-password" class="mensaje-error"></span>
-
+                        @error('password')
+                            <span class="mensaje-error">{{ $message }}</span>
+                        @enderror
+                        <br><br>
                         <button type="submit" class="btn-primary">Iniciar Sesión</button>
                     </form>
                     <form id="registro-formulario" class="form-login" action="{{ route('register') }}" method="POST">
@@ -48,30 +52,42 @@
                             <div class="registro-izq">
                                 <label>Usuario</label>
                                 <input type="text" class="form-control" placeholder="Usuario" name="username" id="username">
-                                <span id="error-username" class="mensaje-error"></span>
+                                @error('username')
+                                    <span class="mensaje-error">{{ $message }}</span>
+                                @enderror
 
                                 <label>Nombre</label>
                                 <input type="text" class="form-control" placeholder="Nombre" name="name" id="name">
-                                <span id="error-name" class="mensaje-error"></span>
+                                @error('name')
+                                    <span class="mensaje-error">{{ $message }}</span>
+                                @enderror
 
                                 <label>Apellido</label>
                                 <input type="text" class="form-control" placeholder="Apellido" name="apellidos_user" id="apellidos_user">
-                                <span id="error-apellidos_user" class="mensaje-error"></span>
+                                @error('apellidos_user')
+                                    <span class="mensaje-error">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Columna Derecha -->
                             <div class="registro-der">
                                 <label>Correo electrónico</label>
                                 <input type="text" class="form-control" placeholder="Correo electrónico" name="email" id="email-register">
-                                <span id="error-email-register" class="mensaje-error"></span>
+                                @error('email')
+                                    <span class="mensaje-error">{{ $message }}</span>
+                                @enderror
 
                                 <label>Contraseña</label>
                                 <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password-register">
-                                <span id="error-password-register" class="mensaje-error"></span>
+                                @error('password')
+                                    <span class="mensaje-error">{{ $message }}</span>
+                                @enderror
 
                                 <label>Confirmar contraseña</label>
                                 <input type="password" class="form-control" placeholder="Confirmar contraseña" name="password_confirmation" id="password_confirmation">
-                                <span id="error-password_confirmation" class="mensaje-error"></span>
+                                @error('password_confirmation')
+                                    <span class="mensaje-error">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <button type="submit" class="btn-primary">Registrarse</button>
@@ -104,7 +120,6 @@
 
         // Mostrar el formulario de login por defecto
         mostrarFormulario('login');
-
     </script>
 </body>
 </html>

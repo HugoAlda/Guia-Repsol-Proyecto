@@ -1,4 +1,3 @@
-/* public/css/styles.css */
 html, body {
     margin: 0;
     padding: 0;
@@ -44,7 +43,6 @@ body {
 }
 
 .contenedor-izquierda {
-    /* background-color: blue; */
     width: 50%;
     height: 100%;
     display: flex;
@@ -73,10 +71,10 @@ body {
 .contenedor-derecha {
     width: 50%;
     height: 100%;
-    flex: 1; /* Ocupa el 50% del espacio disponible */
+    flex: 1;
     display: flex;
-    flex-direction: column; /* Divide el contenedor en dos filas */
-    align-items: stretch; /* Hace que los hijos se estiren para ocupar toda la altura */
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .cambio {
@@ -84,61 +82,60 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    box-sizing: border-box;
 }
 
 .cambio-izq, .cambio-der {
     width: 50%;
     display: flex;
-    justify-content: flex-start; /* Alinea el botón a la izquierda */
+    justify-content: flex-start;
     align-items: center;
 }
 
 .cambio-der {
-    justify-content: flex-end; /* Alinea el botón a la derecha */
+    justify-content: flex-end;
 }
 
 .boton-cambio {
-    background: none; /* Quita el fondo */
-    border: none; /* Quita el borde */
-    color: white; /* Color del texto por defecto */
+    background: none;
+    border: none;
+    color: white;
     font-size: 1rem;
     cursor: pointer;
     padding: 10px 20px;
     position: relative;
     text-decoration: none;
     transition: all 0.3s ease;
-    width: 100%; /* Misma anchura que los inputs */
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .boton-cambio:hover::after {
-    width: 100%; /* La línea se expande al 100% al hacer hover */
+    width: 100%;
 }
 
 .boton-cambio::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px; /* Posición de la línea debajo del texto */
+    bottom: -5px;
     width: 0;
-    height: 2px; /* Grosor de la línea */
-    background-color: #007bff; /* Color de la línea */
+    height: 2px;
+    background-color: #007bff;
     transition: width 0.3s ease;
 }
 
 .boton-cambio.active {
-    color: #007bff; /* Color del texto cuando está activo */
+    color: #007bff;
 }
 
 .boton-cambio.active::after {
-    width: 100%; /* La línea está siempre visible para el botón activo */
+    width: 100%;
 }
 
 .login-register {
-    /* background-color: green; */
     height: 85%;
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +146,7 @@ body {
     padding: 30px;
     border-radius: 10px;
     width: 100%;
-    max-width: 800px; /* Aumentamos el ancho máximo para permitir dos columnas */
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,18 +155,18 @@ body {
 /* Contenedor de las columnas */
 .contenedor-columnas {
     display: flex;
-    justify-content: space-between; /* Espacio entre las columnas */
-    gap: 20px; /* Espaciado entre las columnas */
-    width: 100%; /* Ocupa todo el ancho disponible */
-    margin-bottom: 20px; /* Espacio debajo del contenedor */
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 /* Estilos para cada columna */
 .registro-izq, .registro-der {
-    width: 48%; /* Cada columna ocupa aproximadamente la mitad del ancho */
+    width: 48%;
     display: flex;
-    flex-direction: column; /* Campos de entrada en columna */
-    align-items: flex-start; /* Alinea los elementos a la izquierda */
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 /* Labels */
@@ -183,7 +180,7 @@ body {
 .form-login input[type="email"],
 .form-login input[type="password"],
 .form-login input[type="text"] {
-    width: 96%; /* Los inputs ocupan el 100% del ancho de su columna */
+    width: 96%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -231,6 +228,7 @@ body {
 /* Mensaje de error */
 .form-login .mensaje-error {
     color: red;
-    margin-top: 10px;
-    font-size: 0.9rem;
+    margin-top: 0; /* Quita el margen superior */
+    margin-bottom: 10px; /* Espaciado inferior */
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
 }
