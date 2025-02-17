@@ -22,9 +22,15 @@ Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rutas protegidas por autenticación (solo para usuarios autenticados)
+Route::middleware(['auth'])->group(function () {
+    // Ruta para el panel de administración
+    Route::get('/admin', function () {
+        return view('admin');
+    })->name('admin');
 
-// Ruta para el panel de administración
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    // Rutas del CRUD de restaurantes
+    Route::resource('restaurantes', AdminController::class);
+});
 
 // Rutas protegidas por autenticación (solo para usuarios autenticados)
 Route::middleware(['auth'])->group(function () {
