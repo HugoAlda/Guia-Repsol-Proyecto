@@ -14,6 +14,7 @@ use App\Models\Provincia;
 
 class Restaurante extends Authenticatable
 {
+
     protected $table = 'restaurantes';
     protected $primaryKey = 'id';
 
@@ -27,17 +28,19 @@ class Restaurante extends Authenticatable
         'img_restaurante',
         'nombre_gerente',
         'email_gerente',
-        'comunidad_autonoma_id',
-        'provincia_id',
+        'id_comunidad_autonoma',
+        'id_provincia'
     ];
 
+    // Relación con ComunidadAutonoma
     public function comunidadAutonoma()
     {
-        return $this->belongsTo(ComunidadAutonoma::class, 'comunidad_autonoma_id');
+        return $this->belongsTo(ComunidadAutonoma::class, 'id_comunidad_autonoma');
     }
 
+    // Relación con Provincia
     public function provincia()
     {
-        return $this->belongsTo(Provincia::class, 'provincia_id');
+        return $this->belongsTo(Provincia::class, 'id_provincia');
     }
 }

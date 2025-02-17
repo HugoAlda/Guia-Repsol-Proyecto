@@ -9,14 +9,24 @@ class RestauranteController extends Controller
 {
     public function index()
     {
-        // Obtener restaurantes ordenados de mayor a menor valoración
-        $restaurantes = Restaurante::orderByDesc('valoracion_media')->get();
+        // Obtener todos los restaurantes con sus relaciones cargadas
+        $restaurantes = Restaurante::with(['comunidadAutonoma', 'provincia'])
+            ->orderByDesc('valoracion_media')
+            ->get();
 
-        // Agrupar por la parte entera de la valoración media
-        $restaurantesByRating = $restaurantes->groupBy(function ($restaurante) {
-            return floor($restaurante->valoracion_media); // Agrupa en valores enteros (5, 4, 3, etc.)
-        });
+        // Organizar los restaurantes por comunidad autónoma, provincia y estrellas
+        $restaurantesAgrupados = $restaurantes->groupBy([
+            function ($restaurante) {
+                return $restaurante->comunidadAutonoma->nombre_comunidad; // Agrupa por comunidad autónoma
+            },
+            function ($restaurante) {
+                return $restaurante->provincia->nombre_provincia; // Agrupa por provincia
+            },
+            function ($restaurante) {
+                return floor($restaurante->valoracion_media); // Agrupa por estrellas (parte entera)
+            }
+        ]);
 
-        return view('guia-repsol', compact('restaurantesByRating'));
+        return view('guia-repsol', compact('restaurantesAgrupados'));
     }
 }

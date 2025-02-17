@@ -9,21 +9,15 @@ use App\Models\ComunidadAutonoma;
 class Provincia extends Model
 {
 
-    protected $table = 'provincias';
+    protected $table = 'provincia';
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nombre_provincia',
-        'comunidad_autonoma_id',
+        'nombre_provincia'
     ];
 
     public function restaurantes()
     {
-        return $this->hasMany(Restaurante::class, 'provincia_id');
-    }
-
-    public function comunidadAutonoma()
-    {
-        return $this->belongsTo(ComunidadAutonoma::class, 'comunidad_autonoma_id');
+        return $this->hasMany(Restaurante::class, 'id_provincia');
     }
 }

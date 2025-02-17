@@ -8,7 +8,7 @@ use App\Models\Restaurante;
 class ComunidadAutonoma extends Model
 {
 
-    protected $table = 'comunidades_autonomas';
+    protected $table = 'comunidad_autonoma';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -17,6 +17,6 @@ class ComunidadAutonoma extends Model
 
     public function restaurantes()
     {
-        return $this->hasMany(Restaurante::class, 'comunidad_autonoma_id');
+        return $this->hasMany(Restaurante::class, 'id_comunidad_autonoma');
     }
 }
