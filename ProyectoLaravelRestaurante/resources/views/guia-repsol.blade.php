@@ -17,38 +17,27 @@
     <div class="container">
         <h2 class="titulo">Descubre los galardonados con Estrellas Guía Repsol de 2024</h2>
         
-        <!-- Mostrar restaurantes agrupados por comunidad, provincia y estrellas -->
-        @foreach ($restaurantesAgrupados as $comunidad => $provincias)
-            <div class="community-section">
-                <h3 class="community-title">{{ $comunidad }}</h3>
-
-                @foreach ($provincias as $provincia => $estrellas)
-                    <div class="province-section">
-                        <h4 class="province-title">{{ $provincia }}</h4>
-
-                        @foreach ($estrellas as $range => $restaurantes)
-                            @if ($restaurantes->isNotEmpty())
-                                <div class="restaurant-category">
-                                    <div class="category-info">
-                                        <h5>⭐ {{ $range }} Estrellas</h5>
-                                    </div>
-                                    <div class="restaurant-cards-container">
-                                        @foreach ($restaurantes->sortByDesc('valoracion_media') as $restaurante)
-                                            <div class="restaurant-card">
-                                                <img src="{{ asset('img/logos_restaurantes/' . $restaurante->img_restaurante) }}" alt="{{ $restaurante->nombre_restaurante }}">
-                                                <div class="info">
-                                                    <h5>{{ $restaurante->nombre_restaurante }}</h5>
-                                                    <p>{{ $restaurante->ubicacion_restaurante }}</p>
-                                                    <br>
-                                                    <h5>{{ $restaurante->precio_restaurante }}€</h5>
-                                                    <h3>{{ str_repeat('⭐', $restaurante->valoracion_media) }}</h3>
-                                                </div>
-                                            </div>
-                                        @endforeach
+        <!-- Mostrar restaurantes agrupados por estrellas y comunidad -->
+        @foreach ($restaurantesAgrupados as $range => $comunidades)
+            <div class="rating-section">
+                <h3 class="rating-title">⭐ {{ $range }} Estrellas</h3>
+                @foreach ($comunidades as $comunidad => $restaurantes)
+                    <div class="community-section">
+                        <h4 class="community-title">{{ $comunidad }}</h4>
+                        <div class="restaurant-cards-container">
+                            @foreach ($restaurantes as $restaurante)
+                                <div class="restaurant-card">
+                                    <img src="{{ asset('img/logos_restaurantes/' . $restaurante->img_restaurante) }}" alt="{{ $restaurante->nombre_restaurante }}">
+                                    <div class="info">
+                                        <h5>{{ $restaurante->nombre_restaurante }}</h5>
+                                        <p>{{ $restaurante->ubicacion_restaurante }}</p>
+                                        <br>
+                                        <h5>{{ $restaurante->precio_restaurante }}€</h5>
+                                        <h3>{{ str_repeat('⭐', $restaurante->valoracion_media) }}</h3>
                                     </div>
                                 </div>
-                            @endif
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 @endforeach
             </div>
