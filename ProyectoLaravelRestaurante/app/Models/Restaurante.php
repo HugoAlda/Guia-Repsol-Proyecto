@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use App\Models\Role;
+use App\Models\Resena;
+use App\Models\Favorito;
+use App\Models\ComunidadAutonoma;
+use App\Models\Provincia;
 
-class Restaurante extends Model
+class Restaurante extends Authenticatable
 {
-    use HasFactory;
-
     protected $table = 'restaurantes';
     protected $primaryKey = 'id';
 
@@ -20,23 +24,20 @@ class Restaurante extends Model
         'horario_restaurante',
         'precio_restaurante',
         'valoracion_media',
-        'imagen_restaurante',
+        'img_restaurante',
         'nombre_gerente',
         'email_gerente',
+        'comunidad_autonoma_id',
+        'provincia_id',
     ];
 
-    public function resenas()
+    public function comunidadAutonoma()
     {
-        return $this->hasMany(Resena::class, 'id_restaurantes');
+        return $this->belongsTo(ComunidadAutonoma::class, 'comunidad_autonoma_id');
     }
 
-    public function favoritos()
+    public function provincia()
     {
-        return $this->hasMany(Favorito::class, 'id_restaurantes');
-    }
-
-    public function tipoCocinas()
-    {
-        return $this->hasMany(TipoCocina::class, 'id_restaurantes');
+        return $this->belongsTo(Provincia::class, 'provincia_id');
     }
 }
