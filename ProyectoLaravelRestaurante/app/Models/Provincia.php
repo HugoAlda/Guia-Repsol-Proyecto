@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Restaurante;
+use App\Models\ComunidadAutonoma;
 
 class Provincia extends Model
 {
-    use HasFactory;
 
     protected $table = 'provincia';
     protected $primaryKey = 'id';
@@ -15,4 +15,9 @@ class Provincia extends Model
     protected $fillable = [
         'nombre_provincia'
     ];
+
+    public function restaurantes()
+    {
+        return $this->hasMany(Restaurante::class, 'id_provincia');
+    }
 }
