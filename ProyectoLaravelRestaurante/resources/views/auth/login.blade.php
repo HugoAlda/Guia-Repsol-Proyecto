@@ -105,46 +105,6 @@
         // Mostrar el formulario de login por defecto
         mostrarFormulario('login');
 
-        // Validación AJAX del correo y la contraseña
-        $(document).ready(function() {
-            $('#email').on('blur', function() {
-                var email = $(this).val();
-                $.ajax({
-                    url: '{{ route("validate.email") }}',
-                    method: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        email: email
-                    },
-                    success: function(response) {
-                        if(response.error) {
-                            $('#error-email').text(response.error);
-                        } else {
-                            $('#error-email').text('');
-                        }
-                    }
-                });
-            });
-
-            $('#password').on('blur', function() {
-                var password = $(this).val();
-                $.ajax({
-                    url: '{{ route("validate.password") }}',
-                    method: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        password: password
-                    },
-                    success: function(response) {
-                        if(response.error) {
-                            $('#error-password').text(response.error);
-                        } else {
-                            $('#error-password').text('');
-                        }
-                    }
-                });
-            });
-        });
     </script>
 </body>
 </html>

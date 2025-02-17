@@ -8,10 +8,6 @@
 </head>
 <body>
     <nav class="navbar">
-        {{-- <div class="containerLogo">
-            <img src="{{ asset('img/logoGuiaRepsol.png') }}" alt="Logo Guía Repsol">
-            <a class="btn-access" href="{{ route('login') }}">Acceso</a>
-        </div> --}}
         <div class="containerLogo">
             <img src="{{ asset('img/logoGuiaRepsol.png') }}" alt="Logo Guía Repsol">
         
