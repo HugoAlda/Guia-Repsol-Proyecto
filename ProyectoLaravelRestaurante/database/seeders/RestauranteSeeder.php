@@ -24,6 +24,8 @@ class RestauranteSeeder extends Seeder
                 'img_restaurante' => 'arzak.jpg',
                 'nombre_gerente' => 'Juan Mari Arzak',
                 'email_gerente' => 'info@arzak.es',
+                'id_comunidad_autonoma' => 1,
+                'id_provincia' => 1,
             ],
             [
                 'nombre_restaurante' => 'El Celler de Can Roca',
