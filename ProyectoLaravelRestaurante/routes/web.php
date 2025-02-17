@@ -26,11 +26,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Ruta para el panel de administración
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
-// Rutas protegidas por autenticación (solo para usuarios autenticados)
-Route::middleware(['auth'])->group(function () {
-    Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
-});
-
 // Ruta para el logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
