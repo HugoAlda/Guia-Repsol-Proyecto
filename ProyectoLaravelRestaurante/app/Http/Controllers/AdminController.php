@@ -6,6 +6,7 @@ use App\Models\Restaurante;
 use Illuminate\Http\Request;
 use App\Models\ComunidadAutonoma;
 use App\Models\Provincia;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -25,25 +26,65 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre_restaurante' => 'required',
-            'ubicacion_restaurante' => 'required',
-            'img_restaurante' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        // Definir las reglas de validación
+        $rules = [
+            'nombre_restaurante' => 'required|string',
+            'ubicacion_restaurante' => 'required|string',
+            'img_restaurante' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'descripcion_restaurante' => 'required|string',
+            'horario_restaurante' => 'required|string',
+            'precio_restaurante' => 'required|numeric',
+            'valoracion_media' => 'required|numeric|min:0|max:5',
+            'nombre_gerente' => 'required|string',
+            'email_gerente' => 'required|email',
+            'id_comunidad_autonoma' => 'required|exists:comunidades_autonomas,id',
+            'id_provincia' => 'required|exists:provincias,id',
+        ];
 
+        // Definir los mensajes personalizados de error
+        $messages = [
+            'nombre_restaurante.required' => 'El nombre del restaurante es obligatorio.',
+            'ubicacion_restaurante.required' => 'La ubicación del restaurante es obligatoria.',
+            'img_restaurante.required' => 'La imagen del restaurante es obligatoria.',
+            'img_restaurante.image' => 'El archivo de imagen debe ser una imagen válida.',
+            'descripcion_restaurante.required' => 'La descripción del restaurante es obligatoria.',
+            'descripcion_restaurante.string' => 'La descripción debe ser un texto válido.',
+            'horario_restaurante.required' => 'El horario del restaurante es obligatorio.',
+            'horario_restaurante.string' => 'El horario debe ser un texto válido.',
+            'precio_restaurante.required' => 'El precio del restaurante es obligatorio.',
+            'precio_restaurante.numeric' => 'El precio debe ser un número.',
+            'valoracion_media.required' => 'La valoración media es obligatoria.',
+            'valoracion_media.numeric' => 'La valoración media debe ser un número entre 0 y 5.',
+            'valoracion_media.min' => 'La valoración media no puede ser menor a 0.',
+            'valoracion_media.max' => 'La valoración media no puede ser mayor a 5.',
+            'nombre_gerente.required' => 'El nombre del gerente es obligatorio.',
+            'nombre_gerente.string' => 'El nombre del gerente debe ser un texto válido.',
+            'email_gerente.required' => 'El email del gerente es obligatorio.',
+            'email_gerente.email' => 'El email del gerente debe ser una dirección de correo válida.',
+            'id_comunidad_autonoma.required' => 'La comunidad autónoma es obligatoria.',
+            'id_comunidad_autonoma.exists' => 'La comunidad autónoma seleccionada no existe.',
+            'id_provincia.required' => 'La provincia es obligatoria.',
+            'id_provincia.exists' => 'La provincia seleccionada no existe.',
+        ];
+
+        // Validar la solicitud con las reglas y mensajes definidos
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        // Manejo de la imagen (si se carga)
+        $imagePath = null;
         if ($request->hasFile('img_restaurante')) {
             $file = $request->file('img_restaurante');
-            $filename = time() . '_' . $file->getClientOriginalName(); // Nombre único
-            $destinationPath = public_path('img/logos_restaurantes'); // Carpeta en public/
-        
-            // Mover la imagen a la carpeta public/img/logos_restaurantes
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('img/logos_restaurantes');
             $file->move($destinationPath, $filename);
-        
-            // Guardar la ruta relativa en la base de datos
             $imagePath = $filename;
         }
-        
 
+        // Crear el restaurante
         Restaurante::create([
             'nombre_restaurante' => $request->nombre_restaurante,
             'ubicacion_restaurante' => $request->ubicacion_restaurante,
@@ -69,33 +110,83 @@ class AdminController extends Controller
 
     public function edit(Restaurante $restaurante)
     {
-        return view('restaurantes.edit', compact('restaurante'));
+        $comunidades = ComunidadAutonoma::all();
+        $provincias = Provincia::all();
+
+        return view('edit', compact('restaurante', 'comunidades', 'provincias'));
     }
 
     public function update(Request $request, Restaurante $restaurante)
     {
-        $request->validate([
-            'nombre_restaurante' => 'required',
-            'ubicacion_restaurante' => 'required',
-            'img_restaurante' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        // Definir las reglas de validación para la actualización
+        $rules = [
+            'nombre_restaurante' => 'required|string',
+            'ubicacion_restaurante' => 'required|string',
+            'img_restaurante' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'descripcion_restaurante' => 'required|string',
+            'horario_restaurante' => 'required|string',
+            'precio_restaurante' => 'required|numeric',
+            'valoracion_media' => 'required|numeric|min:0|max:5',
+            'nombre_gerente' => 'required|string',
+            'email_gerente' => 'required|email',
+            'id_comunidad_autonoma' => 'required|exists:comunidades_autonomas,id',
+            'id_provincia' => 'required|exists:provincias,id',
+        ];
 
-        if ($request->hasFile('img_restaurante')) {
-            $imagePath = $request->file('img_restaurante')->store('restaurantes', 'public');
-            $restaurante->img_restaurante = $imagePath;
+        // Mensajes de error personalizados para la actualización
+        $messages = [
+            'nombre_restaurante.required' => 'El nombre del restaurante es obligatorio.',
+            'ubicacion_restaurante.required' => 'La ubicación del restaurante es obligatoria.',
+            'img_restaurante.required' => 'La imagen del restaurante es obligatoria.',
+            'img_restaurante.image' => 'El archivo de imagen debe ser una imagen válida.',
+            'descripcion_restaurante.required' => 'La descripción del restaurante es obligatoria.',
+            'descripcion_restaurante.string' => 'La descripción debe ser un texto válido.',
+            'horario_restaurante.required' => 'El horario del restaurante es obligatorio.',
+            'horario_restaurante.string' => 'El horario debe ser un texto válido.',
+            'precio_restaurante.required' => 'El precio del restaurante es obligatorio.',
+            'precio_restaurante.numeric' => 'El precio debe ser un número.',
+            'valoracion_media.required' => 'La valoración media es obligatoria.',
+            'valoracion_media.numeric' => 'La valoración media debe ser un número entre 0 y 5.',
+            'valoracion_media.min' => 'La valoración media no puede ser menor a 0.',
+            'valoracion_media.max' => 'La valoración media no puede ser mayor a 5.',
+            'nombre_gerente.required' => 'El nombre del gerente es obligatorio.',
+            'nombre_gerente.string' => 'El nombre del gerente debe ser un texto válido.',
+            'email_gerente.required' => 'El email del gerente es obligatorio.',
+            'email_gerente.email' => 'El email del gerente debe ser una dirección de correo válida.',
+            'id_comunidad_autonoma.required' => 'La comunidad autónoma es obligatoria.',
+            'id_comunidad_autonoma.exists' => 'La comunidad autónoma seleccionada no existe.',
+            'id_provincia.required' => 'La provincia es obligatoria.',
+            'id_provincia.exists' => 'La provincia seleccionada no existe.',
+        ];
+
+        // Validar la solicitud
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
         }
 
+        // Manejo de la imagen (si se carga)
+        if ($request->hasFile('img_restaurante')) {
+            $file = $request->file('img_restaurante');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('img/logos_restaurantes');
+            $file->move($destinationPath, $filename);
+            $restaurante->img_restaurante = $filename;
+        }
+
+        // Actualizar restaurante
         $restaurante->update($request->except(['img_restaurante']) + ['img_restaurante' => $restaurante->img_restaurante]);
 
         return redirect()->route('admin')
             ->with('success', 'Restaurante actualizado exitosamente.');
     }
 
-    public function destroy(Restaurante $restaurante)
+    public function destroy($id)
     {
+        $restaurante = Restaurante::findOrFail($id);
         $restaurante->delete();
 
-        return redirect()->route('admin')
-            ->with('success', 'Restaurante eliminado exitosamente.');
+        return redirect()->route('admin')->with('success', 'Restaurante eliminado correctamente.');
     }
 }

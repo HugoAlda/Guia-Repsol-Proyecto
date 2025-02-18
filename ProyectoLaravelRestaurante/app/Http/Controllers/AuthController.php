@@ -34,8 +34,10 @@ class AuthController extends Controller
             $user = Auth::user();
 
             // Verificar el rol del usuario
-            if ($user->role_id == 1) { // Si el rol es 1 (administrador)
-                return redirect()->route('/admin'); // Redirigir a la vista de admin
+            if ($user->id_roles == 1) { // Si el rol es 1 (administrador)
+                return redirect()->route('admin');
+
+                // Redirigir a la vista de admin
             }
 
             // Redirigir a otros usuarios a su vista correspondiente

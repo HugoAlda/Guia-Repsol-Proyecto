@@ -24,7 +24,7 @@
     
             <div class="form-group">
                 <label for="nombre_restaurante">Nombre del Restaurante</label>
-                <input type="text" class="form-control @error('nombre_restaurante') is-invalid @enderror" id="nombre_restaurante" name="nombre_restaurante" value="{{ old('nombre_restaurante') }}" required>
+                <input type="text" class="form-control @error('nombre_restaurante') is-invalid @enderror" id="nombre_restaurante" name="nombre_restaurante" value="{{ old('nombre_restaurante') }}">
                 @error('nombre_restaurante')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -32,7 +32,7 @@
     
             <div class="form-group">
                 <label for="ubicacion_restaurante">Ubicación</label>
-                <input type="text" class="form-control @error('ubicacion_restaurante') is-invalid @enderror" id="ubicacion_restaurante" name="ubicacion_restaurante" value="{{ old('ubicacion_restaurante') }}" required>
+                <input type="text" class="form-control @error('ubicacion_restaurante') is-invalid @enderror" id="ubicacion_restaurante" name="ubicacion_restaurante" value="{{ old('ubicacion_restaurante') }}">
                 @error('ubicacion_restaurante')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -96,7 +96,7 @@
     
             <div class="form-group">
                 <label for="id_comunidad_autonoma">Comunidad Autónoma</label>
-                <select class="form-control @error('id_comunidad_autonoma') is-invalid @enderror" id="id_comunidad_autonoma" name="id_comunidad_autonoma" required>
+                <select class="form-control @error('id_comunidad_autonoma') is-invalid @enderror" id="id_comunidad_autonoma" name="id_comunidad_autonoma">
                     <option value="">Seleccione una comunidad autónoma</option>
                     @foreach($comunidades as $comunidad)
                         <option value="{{ $comunidad->id }}" {{ old('id_comunidad_autonoma') == $comunidad->id ? 'selected' : '' }}>{{ $comunidad->nombre_comunidad }}</option>
@@ -109,7 +109,7 @@
     
             <div class="form-group">
                 <label for="id_provincia">Provincia</label>
-                <select class="form-control @error('id_provincia') is-invalid @enderror" id="id_provincia" name="id_provincia" required>
+                <select class="form-control @error('id_provincia') is-invalid @enderror" id="id_provincia" name="id_provincia">
                     <option value="">Seleccione una provincia</option>
                     @foreach($provincias as $provincia)
                         <option value="{{ $provincia->id }}" {{ old('id_provincia') == $provincia->id ? 'selected' : '' }}>{{ $provincia->nombre_provincia }}</option>
