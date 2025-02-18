@@ -14,6 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Restaurante::factory(10)->create();
+        $this->call([
+            RolSeeder::class,
+            UserSeeder::class,
+            ComunidadAutonomaSeeder::class,
+            ProvinciaSeeder::class,
+            RestauranteSeeder::class,
+            FavoritosSeeder::class,
+            ResenaSeeder::class,
+            TipoCocinaSeeder::class,
+            RestauranteTipoCocinaSeeder::class
+        ]);
     }
 }

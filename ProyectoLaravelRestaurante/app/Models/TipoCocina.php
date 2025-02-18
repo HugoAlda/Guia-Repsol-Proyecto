@@ -7,13 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoCocina extends Model
 {
-    use HasFactory;
-
     protected $table = 'tipo_cocina';
-
-    protected $fillable = [
-        'nombre_tipo',
-    ];
+    protected $fillable = ['nombre_tipo']; // Define las columnas que pueden ser asignadas masivamente
 
     // Relación muchos a muchos con Restaurantes
     public function restaurantes()

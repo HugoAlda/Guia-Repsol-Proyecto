@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class RestauranteTipoCocina extends Model
 {
     protected $table = 'restaurante_tipococina';
-
     protected $fillable = [
         'restaurante_id',
         'tipo_cocina_id'

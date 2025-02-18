@@ -13,44 +13,50 @@ class TipoCocinaSeeder extends Seeder
      */
     public function run(): void
     {
-        TipoCocina::create([
-            'nombre_tipo' => 'Italiana'
-        ]);
+        $tipos = [
+            ["nombre_tipo" => 'Italiana'],
+            ["nombre_tipo" => 'Mexicana'],
+            ["nombre_tipo" => 'Japonesa'],
+            ["nombre_tipo" => 'Española'],
+            ["nombre_tipo" => 'Francesa'],
+            ["nombre_tipo" => 'China'],
+            ["nombre_tipo" => 'India'],
+            ["nombre_tipo" => 'Tailandesa'],
+            ["nombre_tipo" => 'Mediterránea'],
+            ["nombre_tipo" => 'Griega'],
+            ["nombre_tipo" => 'Peruana'],
+            ["nombre_tipo" => 'Coreana'],
+            ["nombre_tipo" => 'Argentina'],
+            ["nombre_tipo" => 'Venezolana'],
+            ["nombre_tipo" => 'Brasileña'],
+            ["nombre_tipo" => 'Vietnamita'],
+            ["nombre_tipo" => 'Marroquí'],
+            ["nombre_tipo" => 'Turca'],
+            ["nombre_tipo" => 'Cubana'],
+            ["nombre_tipo" => 'Libanesa'],
+            ["nombre_tipo" => 'Vegetariana'],
+            ["nombre_tipo" => 'Vegana'],
+            ["nombre_tipo" => 'Fusión'],
+            ["nombre_tipo" => 'Asiática'],
+            ["nombre_tipo" => 'Caribeña'],
+            ["nombre_tipo" => 'Andaluza'],
+            ["nombre_tipo" => 'Catalana'],
+            ["nombre_tipo" => 'Gallega'],
+            ["nombre_tipo" => 'Valenciana'],
+            ["nombre_tipo" => 'Asturiana'],
+            ["nombre_tipo" => 'Vasca'],
+            ["nombre_tipo" => 'Castellana'],
+            ["nombre_tipo" => 'Canaria'],
+            ["nombre_tipo" => 'Murciana'],
+            ["nombre_tipo" => 'Extremeña'],
+            ["nombre_tipo" => 'Balear'],
+            ["nombre_tipo" => 'Navarra'],
+            ["nombre_tipo" => 'Aragonesa'],
+            ["nombre_tipo" => 'Riojana']
+        ];
 
-        TipoCocina::create([
-            'nombre_tipo' => 'Mexicana'
-        ]);
-
-        TipoCocina::create([
-            'nombre_tipo' => 'Arabe'
-        ]);
-
-        TipoCocina::create([
-            'nombre_tipo' => 'Española'
-        ]);
-
-        TipoCocina::create([
-            'nombre_tipo' => 'Inglesa'
-        ]);
-
-        TipoCocina::create([
-            'nombre_tipo' => 'Japonesa'
-        ]);
-
-        TipoCocina::create([
-            'nombre_tipo' => 'Francesa'
-        ]);
-
-        TipoCocina::create([
-            'nombre_tipo' => 'China'
-        ]);
-
-        TipoCocina::create([
-            'nombre_tipo' => 'Estadounidense'
-        ]);
-
-        TipoCocina::create([
-            'nombre_tipo' => 'Tailandesa'
-        ]);
+        foreach ($tipos as $tipo) {
+            TipoCocina::create($tipo);
+        }
     }
 }

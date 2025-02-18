@@ -13,13 +13,9 @@ return new class extends Migration
     {
         Schema::create('restaurante_tipococina', function (Blueprint $table) {
             $table->id(); // ID único para cada registro en la tabla pivote
-            $table->unsignedBigInteger('restaurante_id'); // ID del restaurante
-            $table->unsignedBigInteger('tipo_cocina_id'); // ID del tipo de cocina
-            $table->timestamps(); // Columnas created_at y updated_at
-
-            // Definir las claves foráneas
-            $table->foreign('restaurante_id')->references('id')->on('restaurantes')->onDelete('cascade');
-            $table->foreign('tipo_cocina_id')->references('id')->on('tipo_cocina')->onDelete('cascade');
+            $table->foreignId('restaurante_id')->constrained('restaurantes')->onDelete('cascade');
+            $table->foreignId('tipo_cocina_id')->constrained('tipo_cocina')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
