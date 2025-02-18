@@ -28,8 +28,18 @@ class AuthController extends Controller
 
         // Intentar autenticar al usuario
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate(); // Regenerar la sesión para evitar ataques de fijación de sesión
-            return redirect()->intended('/guia-repsol'); // Redirigir al usuario a su destino previsto
+            $request->session()->regenerate(); // Regenerar la sesión
+        
+            // Obtener el usuario autenticado
+            $user = Auth::user();
+        
+            // Verificar el rol del usuario
+            if ($user->role_id == 1) { // Si el rol es 1 (administrador)
+                return redirect()->route('admin'); // Redirigir a la vista de admin
+            }
+        
+            // Redirigir a otros usuarios a su vista correspondiente
+            return redirect()->intended('/guia-repsol');
         }
 
         // Si falla la autenticación, devolver con errores
@@ -44,6 +54,6 @@ class AuthController extends Controller
         Auth::logout(); // Cerrar la sesión del usuario
         $request->session()->invalidate(); // Invalidar la sesión actual
         $request->session()->regenerateToken(); // Regenerar el token CSRF
-        return redirect('/login'); // Redirigir a la página de login
+        return redirect('/guia-repsol'); // Redirigir a la página de login
     }
 }

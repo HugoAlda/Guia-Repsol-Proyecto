@@ -13,8 +13,8 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 // Ruta para procesar el inicio de sesión
 Route::post('/login', [AuthController::class, 'login']);
 
-// Ruta para procesar el registro de usuarios
-Route::post('/register', [RegisterController::class, 'store'])->name('register');
+// Ruta para la página principal de Guía Repsol
+Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
 
 // Ruta para cerrar sesión
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -23,8 +23,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
 Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
 
-// Ruta para la página principal de Guía Repsol
-Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
+// Ruta para procesar el registro de usuarios
+Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
 // Rutas protegidas por autenticación (solo para usuarios autenticados)
 Route::middleware(['auth'])->group(function () {

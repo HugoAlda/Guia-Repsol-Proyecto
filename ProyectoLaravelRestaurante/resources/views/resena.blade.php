@@ -23,21 +23,19 @@
         <div class="resena-izquierda">
             <!-- Nombre del restaurante -->
             <h1 class="resena-nombre">{{ $restaurante->nombre_restaurante }}</h1>
-
-            <!-- Valoración -->
-            <div class="resena-valoracion">
+            <!-- Ubicacion -->
+            <div class="resena-ubicacion">
+                <p>{{ $restaurante->ubicacion_restaurante }}</p>
                 <span class="estrellas">
                     @for ($i = 0; $i < $restaurante->valoracion_media; $i++)
                         ⭐
                     @endfor
                     @for ($i = $restaurante->valoracion_media; $i < 5; $i++)
                         ☆
-                    @endfor
+                        @endfor
+                    <h3>{{$restaurante->valoracion_media}}</h3>
                 </span>
             </div>
-
-            <!-- Dirección -->
-            <p class="resena-direccion">{{ $restaurante->direccion_restaurante }}</p>
 
             <!-- Mapa de Google -->
             <iframe class="resena-mapa"
