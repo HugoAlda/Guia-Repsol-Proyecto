@@ -39,7 +39,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Ruta para el panel de administración
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create'); // <-- Asegura que esté definida
+Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
 
 // Ruta para el logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
+
