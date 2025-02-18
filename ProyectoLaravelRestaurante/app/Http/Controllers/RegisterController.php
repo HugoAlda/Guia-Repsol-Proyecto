@@ -19,6 +19,7 @@ class RegisterController extends Controller
     {
         // Definir reglas de validación sin límites máximos
         $rules = [
+            'username' => ['required', 'string', 'min:3', 'unique:users,username'],
             'name' => ['required', 'string', 'min:2'],
             'apellidos_user' => ['required', 'string', 'min:2'],
             'email' => ['required', 'string', 'email', 'unique:users,email', 'min:5'],
@@ -27,6 +28,11 @@ class RegisterController extends Controller
 
         // Definir mensajes personalizados
         $messages = [
+            'username.required' => 'El nombre de usuario es obligatorio.',
+            'username.string' => 'El nombre de usuario debe ser un texto válido.',
+            'username.min' => 'El nombre de usuario debe tener al menos 3 caracteres.',
+            'username.unique' => 'Este nombre de usuario ya está en uso.',
+
             'name.required' => 'El nombre es obligatorio.',
             'name.string' => 'El nombre debe ser un texto válido.',
             'name.min' => 'El nombre debe tener al menos 2 caracteres.',
@@ -54,19 +60,9 @@ class RegisterController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        // Generar un nombre de usuario único basado en nombre y apellidos
-        $baseUsername = strtolower($request->name . '.' . $request->apellidos_user);
-        $username = $baseUsername;
-        $counter = 1;
-        
-        while (User::where('username', $username)->exists()) {
-            $username = $baseUsername . $counter;
-            $counter++;
-        }
-
         // Crear usuario
         $user = User::create([
-            'username' => $username,
+            'username' => $request->username,
             'name' => $request->name,
             'apellidos_user' => $request->apellidos_user,
             'email' => $request->email,

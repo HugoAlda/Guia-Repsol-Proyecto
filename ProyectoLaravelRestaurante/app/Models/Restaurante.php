@@ -4,16 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Role;
-use App\Models\Resena;
-use App\Models\Favorito;
-use App\Models\ComunidadAutonoma;
-use App\Models\Provincia;
 
 class Restaurante extends Authenticatable
 {
+    use HasFactory;
 
     protected $table = 'restaurantes';
     protected $primaryKey = 'id';
@@ -42,5 +36,11 @@ class Restaurante extends Authenticatable
     public function provincia()
     {
         return $this->belongsTo(Provincia::class, 'id_provincia');
+    }
+
+    // Relación muchos a muchos con Tipos de Cocina
+    public function tiposCocina()
+    {
+        return $this->belongsToMany(TipoCocina::class, 'restaurante_tipococina', 'restaurante_id', 'tipo_cocina_id');
     }
 }

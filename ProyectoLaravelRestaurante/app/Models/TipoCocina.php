@@ -10,10 +10,14 @@ class TipoCocina extends Model
     use HasFactory;
 
     protected $table = 'tipo_cocina';
-    protected $primaryKey = 'id';
 
     protected $fillable = [
         'nombre_tipo',
-        'id_restaurantes',
     ];
+
+    // Relación muchos a muchos con Restaurantes
+    public function restaurantes()
+    {
+        return $this->belongsToMany(Restaurante::class, 'restaurante_tipococina', 'tipo_cocina_id', 'restaurante_id');
+    }
 }
