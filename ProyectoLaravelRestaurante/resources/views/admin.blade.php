@@ -56,7 +56,7 @@
                             <td>{{ $restaurante->ubicacion_restaurante }}</td>
                             <td>{{ $restaurante->descripcion_restaurante }}</td>
                             <td>{{ $restaurante->horario_restaurante ?? 'No disponible' }}</td>
-                            <td>{{ $restaurante->precio_restaurante ? '€' . number_format($restaurante->precio_restaurante, 2) : 'No disponible' }}
+                            <td>{{ $restaurante->precio_restaurante ? number_format($restaurante->precio_restaurante, 2) . '€' : 'No disponible' }}
                             </td>
                             <td>{{ number_format($restaurante->valoracion_media, 1) }}</td>
                             <td class="imagenes">
