@@ -27,21 +27,20 @@ class AuthController extends Controller
         ]);
 
         // Intentar autenticar al usuario
-        // Intentar autenticar al usuario
-    if (Auth::attempt($credentials)) {
-        $request->session()->regenerate(); // Regenerar la sesión
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate(); // Regenerar la sesión
 
-        // Obtener el usuario autenticado
-        $user = Auth::user();
+            // Obtener el usuario autenticado
+            $user = Auth::user();
 
-        // Verificar el rol del usuario
-        if ($user->role_id == 1) { // Si el rol es 1 (administrador)
-            return redirect()->route('admin'); // Redirigir a la vista de admin
+            // Verificar el rol del usuario
+            if ($user->role_id == 1) { // Si el rol es 1 (administrador)
+                return redirect()->route('/admin'); // Redirigir a la vista de admin
+            }
+
+            // Redirigir a otros usuarios a su vista correspondiente
+            return redirect()->intended('/guia-repsol');
         }
-
-        // Redirigir a otros usuarios a su vista correspondiente
-        return redirect()->intended('/guia-repsol');
-    }
 
         // Si falla la autenticación, devolver con errores
         return back()->withErrors([

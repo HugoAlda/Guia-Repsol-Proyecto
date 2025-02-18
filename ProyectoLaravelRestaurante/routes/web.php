@@ -37,8 +37,13 @@ Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
 // Ruta para cerrar sesión
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Ruta para el panel de administración
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+// Rutas protegidas por autenticación (solo para usuarios autenticados)
+Route::middleware(['auth'])->group(function () {
+    // Ruta para el panel de administración
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+});
+
+// Ruta para la vista de creación de restaurantes
 Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create'); // <-- Asegura que esté definida
 Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
 

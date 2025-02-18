@@ -10,7 +10,23 @@
     <nav class="navbar">
         <div class="containerLogo">
             <img src="{{ asset('img/logoGuiaRepsol.png') }}" alt="Logo Guía Repsol">
-            <a class="btn-access" href="{{route('login')}}">Acceso</a>
+
+            <!-- Verificar si el usuario está autenticado -->
+            @if (auth()->check())
+                <!-- Mostrar el nombre y correo del usuario -->
+                <div class="user-info">
+                    <span>{{ auth()->user()->username }}</span>
+                    <span>{{ auth()->user()->email }}</span>
+                    <!-- Botón de Cerrar Sesión -->
+                    <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                        @csrf
+                        <button type="submit" class="btn-logout">Cerrar Sesión</button>
+                    </form>
+                </div>
+            @else
+                <!-- Mostrar el botón de acceso si no está autenticado -->
+                <a class="btn-access" href="{{ route('login') }}">Acceso</a>
+            @endif
         </div>
     </nav>
 
