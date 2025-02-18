@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Restaurante;
 
@@ -10,7 +8,7 @@ class RestauranteController extends Controller
     public function index(Request $request)
     {
         // Inicializar la consulta base
-        $query = Restaurante::with(['comunidadAutonoma']);
+        $query = Restaurante::with(['comunidadAutonoma', 'tiposCocina']);
 
         // Filtro por nombre
         if ($request->has('nombre') && $request->nombre) {
@@ -19,7 +17,9 @@ class RestauranteController extends Controller
 
         // Filtro por tipo de cocina
         if ($request->has('cocina') && is_array($request->cocina)) {
-            $query->whereIn('tipo_cocina', $request->cocina);
+            $query->whereHas('tiposCocina', function ($q) use ($request) {
+                $q->whereIn('tipo_cocina.id', $request->cocina);
+            });
         }
 
         // Filtro por valoraciones
@@ -38,6 +38,11 @@ class RestauranteController extends Controller
 
         // Obtener los restaurantes filtrados
         $restaurantes = $query->orderByDesc('valoracion_media')->get();
+
+        // Depura los resultados para verificar si hay datos
+        if ($restaurantes->isEmpty()) {
+            dd('No se encontraron restaurantes con los filtros proporcionados.');
+        }
 
         // Organizar los restaurantes por estrellas y comunidad autónoma
         $restaurantesAgrupados = $restaurantes->groupBy([
@@ -58,7 +63,7 @@ class RestauranteController extends Controller
         });
 
         // Datos para los filtros
-        $tiposCocina = ['Mediterránea', 'Asiática', 'Italiana', 'Española', 'Vegetariana'];
+        $tiposCocina = \App\Models\TipoCocina::pluck('nombre_tipo', 'id'); // Obtener tipos de cocina desde la BD
         $comunidadesAutonomas = \App\Models\ComunidadAutonoma::pluck('nombre_comunidad', 'id'); // Obtener comunidades desde la BD
 
         // Pasar datos a la vista

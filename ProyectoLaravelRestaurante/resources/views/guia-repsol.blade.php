@@ -42,13 +42,13 @@
             <!-- Filtro por tipo de cocina -->
             <div class="filter-group">
                 <label>Tipo de cocina:</label>
-                {{-- @foreach ($tiposCocina as $tipo)
-                    <label>
-                        <input type="checkbox" name="cocina[]" value="{{ $tipo }}" 
-                            {{ in_array($tipo, request('cocina', [])) ? 'checked' : '' }}>
-                        {{ $tipo }}
-                    </label>
-                @endforeach --}}
+                <select name="cocina[]" id="cocina" multiple>
+                @foreach ($tiposCocina as $tipo)
+                    <option value="{{ $id }}" 
+                        {{ in_array($id, request('comunidad', [])) ? 'selected' : '' }}>
+                        {{ $nombre }}
+                    </option>
+                @endforeach
             </div>
 
             <!-- Filtro por valoraciones -->
