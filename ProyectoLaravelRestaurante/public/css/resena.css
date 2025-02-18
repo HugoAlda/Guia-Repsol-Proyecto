@@ -124,3 +124,15 @@
     height: 200px;
     z-index: -1;
 }
+
+.estrella {
+    font-size: 30px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.estrella:hover,
+.estrella.active {
+    color: gold;
+}

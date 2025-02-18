@@ -14,6 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Restaurante::factory(10)->create();
+        // Restaurante::factory(10)->create();
     }
 }

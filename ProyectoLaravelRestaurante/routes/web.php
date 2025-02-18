@@ -7,6 +7,14 @@ use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\ResenaController;
 use App\Http\Controllers\AdminController;
 
+// Ruta para mostrar la vista de reseña
+Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
+
+// Ruta para procesar la valoración
+Route::post('/resena/valorar', [ResenaController::class, 'valorar'])->name('resena.valorar');
+
+// Otras rutas...
+
 // Ruta para mostrar la vista combinada de login y registro (dentro de la carpeta auth)
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
@@ -47,3 +55,5 @@ Route::middleware(['auth'])->group(function () {
     // Ruta para el panel de administración
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 });
+
+Route::post('/resena/valorar', [ResenaController::class, 'valorar'])->name('resena.valorar');
