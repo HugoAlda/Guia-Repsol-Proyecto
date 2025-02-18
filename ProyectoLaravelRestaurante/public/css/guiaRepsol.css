@@ -7,11 +7,16 @@ body {
     overflow-x: hidden; /* Elimina la barra de desplazamiento horizontal */
 }
 
-/* Estilos para la barra de filtros */
+/* Estilos generales para la barra de filtros */
 .filter-bar {
-    background-color: #f8f9fa;
+    background-color: #ffffff; /* Fondo blanco */
     padding: 1rem;
     margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: flex;
+    justify-content: center; /* Alinea todo horizontalmente en el centro */
+    align-items: flex-start; /* Alinea verticalmente al inicio */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten al ancho */
 }
 
 .filter-form {
@@ -19,39 +24,101 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
+    justify-content: center; /* Alinea los grupos de filtros en el centro */
 }
 
 .filter-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 300px; /* Ancho máximo para cada grupo */
+    align-items: center; /* Alinea los elementos dentro del grupo al centro */
+}
+
+/* Estilos para las etiquetas */
+.filter-group label {
+    font-weight: bold;
+    color: #333333;
+    font-size: 0.9rem;
+    text-align: center; /* Centra el texto de las etiquetas */
+}
+
+/* Estilos para los inputs de texto */
+.filter-group input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: border-color 0.15s ease-in-out;
+    text-align: center; /* Centra el texto dentro del input */
+}
+
+.filter-group input[type="text"]:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 /* Estilos para los checkboxes */
-.filter-group label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-right: 1rem;
-}
-
 .filter-group input[type="checkbox"] {
-    margin: 0;
+    margin-right: 0.5rem;
     width: 16px;
     height: 16px;
+    accent-color: #007bff; /* Color azul para los checkboxes seleccionados */
 }
 
+/* Contenedor de valoraciones */
+.valoraciones-container {
+    display: flex;
+    gap: 0.5rem; /* Espacio entre las valoraciones */
+    justify-content: center; /* Centra las valoraciones horizontalmente */
+    align-items: center; /* Alinea verticalmente las valoraciones */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    flex-wrap: wrap; /* Permite que las valoraciones se ajusten al ancho */
+}
+
+/* Estilo para cada valoración */
+.valoracion-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem; /* Espacio entre el checkbox y las estrellas */
+}
+
+/* Estilos para los selects */
+.filter-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    transition: border-color 0.15s ease-in-out;
+    text-align: center; /* Centra el texto dentro del select */
+}
+
+.filter-group select:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Botón de filtrar */
 .btn-filter {
-    background-color: #007bff;
+    background-color: #007bff; /* Azul de Bootstrap */
     color: white;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.15s ease-in-out;
+    margin-top: 1rem; /* Espacio superior para separar el botón */
 }
 
 .btn-filter:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
 }
 
 .btn-logout {

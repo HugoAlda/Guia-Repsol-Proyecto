@@ -11,10 +11,6 @@ use App\Http\Controllers\AdminController;
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-});
-
 // Ruta para el registro de usuarios
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -41,10 +37,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Ruta para los filtros
     Route::get('/admin/filtros', [AdminController::class, 'index'])->name('admin.index');
-    // Route::post('/admin/filtros', [AdminController::class, 'filtrarRestaurantes'])->name('admin.filtrar');
 
     // Ruta para eliminar restaurantes
-    // Route::delete('/admin/{restaurante}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::delete('admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
 });

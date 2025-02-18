@@ -38,35 +38,40 @@
                 <label for="nombre">Buscar por nombre:</label>
                 <input type="text" id="nombre" name="nombre" value="{{ request('nombre') }}" placeholder="Ej: Restaurante...">
             </div>
-
+        
             <!-- Filtro por tipo de cocina -->
             <div class="filter-group">
                 <label>Tipo de cocina:</label>
                 <select name="cocina[]" id="cocina" multiple>
-                @foreach ($tiposCocina as $tipo)
-                    <option value="{{ $id }}" 
-                        {{ in_array($id, request('comunidad', [])) ? 'selected' : '' }}>
-                        {{ $nombre }}
-                    </option>
-                @endforeach
+                    @foreach ($tiposCocina as $id => $nombre)
+                        <option value="{{ $id }}" 
+                            {{ in_array($id, request('cocina', [])) ? 'selected' : '' }}>
+                            {{ $nombre }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
-
+        
             <!-- Filtro por valoraciones -->
             <div class="filter-group">
                 <label>Valoraciones:</label>
-                @for ($i = 1; $i <= 5; $i++)
-                    <label>
-                        <input type="checkbox" name="valoracion[]" value="{{ $i }}" 
-                            {{ in_array($i, request('valoracion', [])) ? 'checked' : '' }}>
-                        {{ str_repeat('⭐', $i) }}
-                    </label>
-                @endfor
+                <div class="valoraciones-container">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div class="valoracion-item">
+                            <label>
+                                <input type="checkbox" name="valoracion[]" value="{{ $i }}" 
+                                    {{ in_array($i, request('valoracion', [])) ? 'checked' : '' }}>
+                                {{ str_repeat('⭐', $i) }}
+                            </label>
+                        </div>
+                    @endfor
+                </div>
             </div>
-
+        
             <!-- Filtro por comunidades autónomas -->
             <div class="filter-group">
                 <label>Comunidades Autónomas:</label>
-                <select name="comunidad[]" id="comunidad" multiple>
+                <select name="comunidad[]" id="comunidad">
                     @foreach ($comunidadesAutonomas as $id => $nombre)
                         <option value="{{ $id }}" 
                             {{ in_array($id, request('comunidad', [])) ? 'selected' : '' }}>
@@ -75,7 +80,7 @@
                     @endforeach
                 </select>
             </div>
-
+        
             <!-- Botón de búsqueda -->
             <button type="submit" class="btn-filter">Filtrar</button>
         </form>
