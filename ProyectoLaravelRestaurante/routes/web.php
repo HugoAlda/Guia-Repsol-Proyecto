@@ -35,6 +35,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/{restaurante}/edit', [AdminController::class, 'edit'])->name('admin.edit');
     Route::put('/admin/{restaurante}', [AdminController::class, 'update'])->name('admin.update');
 
+    // Ruta para los filtros
+    Route::get('/admin/filtros', [AdminController::class, 'index'])->name('admin.index');
+    // Route::post('/admin/filtros', [AdminController::class, 'filtrarRestaurantes'])->name('admin.filtrar');
+
     // Ruta para eliminar restaurantes
     // Route::delete('/admin/{restaurante}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::delete('admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');

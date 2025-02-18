@@ -6,6 +6,10 @@ body {
     overflow-x: hidden; /* Elimina la barra de desplazamiento horizontal */
 }
 
+.valoracion-filter label {
+    display: block !important;
+    margin-bottom: 5px !important; /* Espacio entre las estrellas */
+}
 .container {
     margin-left: 15px !important; /* Elimina margen izquierdo de la página */
     margin-top: 15px !important;
@@ -22,14 +26,12 @@ table {
     color: #0B1741;
 }
 
-/* styles.css */
-
 .containerLogo {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 60px;
+    height: 50px;
     margin-top: 10px !important;
     background-color: #ffcc00;
     padding: 0 15px;

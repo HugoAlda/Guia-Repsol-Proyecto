@@ -56,7 +56,7 @@
     
             <div class="form-group">
                 <label for="precio_restaurante">Precio Promedio</label>
-                <input type="number" class="form-control @error('precio_restaurante') is-invalid @enderror" id="precio_restaurante" name="precio_restaurante" step="0.01" value="{{ old('precio_restaurante') }}">
+                <input type="number" class="form-control @error('precio_restaurante') is-invalid @enderror" id="precio_restaurante" name="precio_restaurante" value="{{ old('precio_restaurante') }}">
                 @error('precio_restaurante')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -64,7 +64,7 @@
     
             <div class="form-group">
                 <label for="valoracion_media">Valoración Media</label>
-                <input type="number" class="form-control @error('valoracion_media') is-invalid @enderror" id="valoracion_media" name="valoracion_media" step="0.01" min="0" max="5" value="{{ old('valoracion_media') }}">
+                <input type="number" class="form-control @error('valoracion_media') is-invalid @enderror" id="valoracion_media" name="valoracion_media" value="{{ old('valoracion_media') }}">
                 @error('valoracion_media')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
