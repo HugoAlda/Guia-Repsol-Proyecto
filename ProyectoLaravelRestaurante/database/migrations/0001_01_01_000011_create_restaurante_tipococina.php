@@ -19,7 +19,7 @@ return new class extends Migration
 
             // Definir las claves foráneas
             $table->foreign('restaurante_id')->references('id')->on('restaurantes')->onDelete('cascade');
-            $table->foreign('tipo_cocina_id')->references('id')->on('tipos_cocina')->onDelete('cascade');
+            $table->foreign('tipo_cocina_id')->references('id')->on('tipo_cocina')->onDelete('cascade');
         });
     }
 

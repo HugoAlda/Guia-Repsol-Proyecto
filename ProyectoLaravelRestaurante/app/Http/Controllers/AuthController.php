@@ -55,6 +55,6 @@ class AuthController extends Controller
         Auth::logout(); // Cerrar la sesión del usuario
         $request->session()->invalidate(); // Invalidar la sesión actual
         $request->session()->regenerateToken(); // Regenerar el token CSRF
-        return redirect('/login'); // Redirigir a la página de login
+        return redirect('/guia-repsol'); // Redirigir a la página de login
     }
 }

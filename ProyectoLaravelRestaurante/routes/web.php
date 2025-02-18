@@ -46,3 +46,5 @@ Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
 
+// Ruta para la página principal de Guía Repsol
+Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
