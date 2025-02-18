@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_cocina', function (Blueprint $table) {
+        Schema::create('tipo_cocina', function (Blueprint $table) {
             $table->id(); // ID único para cada tipo de cocina
             $table->string('nombre_tipo'); // Nombre del tipo de cocina
             $table->timestamps(); // Columnas created_at y updated_at
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_cocina');
+        Schema::dropIfExists('tipo_cocina');
     }
 };
