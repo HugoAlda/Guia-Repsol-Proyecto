@@ -30,7 +30,7 @@
     margin-bottom: 10px;
 }
 
-.resena-valoracion .estrellas {
+.resena-valoracion .star {
     color: gold;
     font-size: 20px;
     margin-left: 10px;
@@ -125,14 +125,14 @@
     z-index: -1;
 }
 
-.estrella {
+.star {
     font-size: 30px;
     cursor: pointer;
     color: gray;
     transition: color 0.3s;
 }
 
-.estrella:hover,
-.estrella.active {
+.star:hover,
+.star.active {
     color: gold;
 }

@@ -66,12 +66,38 @@
         <input type="hidden" id="valoracion" name="valoracion" value="0">
         <div class="rating">
             @for ($i = 1; $i <= 5; $i++)
-                <span class="estrella" data-value="{{ $i }}">☆</span>
+                <span class="star" data-value="{{ $i }}">☆</span>
             @endfor
         </div>
-        <button type="submit">Enviar valoración</button>
+        <button type="submit">Enviar valoración</button>    
     </form>
-
+<script>('DOMContentLoaded', function() {
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating-value');
+    
+        stars.forEach(star => {
+            star.addEventListener('click', function(e) {
+                e.preventDefault();
+                const value = parseInt(this.dataset.value);
+    
+                // Limpiar todas las estrellas
+                stars.forEach(s => s.classList.remove('selected'));
+    
+                // Marcar las estrellas hasta la seleccionada
+                for (let i = 0; i < stars.length; i++) {
+                    if (parseInt(stars[i].dataset.value) <= value) {
+                        stars[i].classList.add('selected');
+                    }
+                }
+    
+                // Actualizar el valor del input oculto
+                ratingInput.value = value;
+                console.log('Valoración seleccionada:', value);
+            });
+        });
+    });
+    
+    </script>
     <script src="{{ asset('js/valoracion.js') }}"></script>
 </body>
 </html>
