@@ -7,22 +7,18 @@ use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\ResenaController;
 use App\Http\Controllers\AdminController;
 
-// Ruta para mostrar la vista de reseña
-Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
-
-// Ruta para procesar la valoración
-Route::post('/resena/valorar', [ResenaController::class, 'valorar'])->name('resena.valorar');
-
-// Otras rutas...
-
-// Ruta para mostrar la vista combinada de login y registro (dentro de la carpeta auth)
+// Ruta para mostrar la vista combinada de login y registro
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-
-// Ruta para procesar el inicio de sesión
 Route::post('/login', [AuthController::class, 'login']);
 
-// Ruta para procesar el registro de usuarios
-Route::post('/register', [RegisterController::class, 'store'])->name('register');
+// Ruta para el registro de usuarios
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
+// Ruta para usuarios normales (Guía Repsol)
+Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
+
+Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
 
 // Ruta para cerrar sesión
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -30,30 +26,22 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Rutas protegidas por autenticación (solo para usuarios autenticados)
 Route::middleware(['auth'])->group(function () {
     // Ruta para el panel de administración
-    Route::get('/admin', function () {
-        return view('admin');
-    })->name('admin');
-
-    // Rutas del CRUD de restaurantes
-    Route::resource('restaurantes', AdminController::class);
-});
-
-// Rutas protegidas por autenticación (solo para usuarios autenticados)
-Route::middleware(['auth'])->group(function () {
-    Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
-});
-
-// Ruta para el logout
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
-
-// Ruta para la página principal de Guía Repsol
-Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
-
-// Rutas protegidas por autenticación (solo para usuarios autenticados)
-Route::middleware(['auth'])->group(function () {
-    // Ruta para el panel de administración
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-});
 
-Route::post('/resena/valorar', [ResenaController::class, 'valorar'])->name('resena.valorar');
+    // Ruta para la creación de restaurantes
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
+
+    // Ruta para la edición de restaurantes
+    Route::get('/admin/{restaurante}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('/admin/{restaurante}', [AdminController::class, 'update'])->name('admin.update');
+
+    // Ruta para los filtros
+    Route::get('/admin/filtros', [AdminController::class, 'index'])->name('admin.index');
+    // Route::post('/admin/filtros', [AdminController::class, 'filtrarRestaurantes'])->name('admin.filtrar');
+
+    // Ruta para eliminar restaurantes
+    // Route::delete('/admin/{restaurante}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::delete('admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
+});

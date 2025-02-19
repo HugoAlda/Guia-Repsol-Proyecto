@@ -11,7 +11,7 @@
     <nav class="navbar">
         <div class="containerLogo">
             <img src="{{ asset('img/logoGuiaRepsol.png') }}" alt="Logo Guía Repsol">
-            <a class="btn-access" href="#">Acceso</a>
+            <a class="btn-access" href="{{route('login')}}">Acceso</a>
         </div>
     </nav>
     <div class="amarillo"></div>
@@ -28,12 +28,10 @@
                     @endfor
                     @for ($i = round($restaurante->valoracion_media); $i < 5; $i++)
                         ☆
-                    @endfor
+                        @endfor
+                    <h3>{{$restaurante->valoracion_media}}</h3>
                 </span>
             </div>
-
-            <!-- Dirección -->
-            <p class="resena-direccion">{{ $restaurante->direccion_restaurante }}</p>
 
             <!-- Mapa de Google -->
             <iframe class="resena-mapa"
