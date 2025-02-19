@@ -71,7 +71,7 @@ class AdminController extends Controller
             'nombre_gerente' => 'nullable|string',
             'email_gerente' => 'nullable|email',
             'id_comunidad_autonoma' => 'required|exists:comunidad_autonoma,id',
-            'id_provincia' => 'required|exists:provincias,id',
+            'id_provincia' => 'required|exists:provincia,id',
         ];
 
         // Definir los mensajes personalizados de error

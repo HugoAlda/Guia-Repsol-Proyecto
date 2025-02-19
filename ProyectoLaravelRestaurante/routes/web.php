@@ -17,7 +17,8 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Ruta para usuarios normales (Guía Repsol)
 Route::get('/guia-repsol', [RestauranteController::class, 'index'])->name('guia-repsol');
-Route::get('/resena', [ResenaController::class, 'index'])->name('resena');
+
+Route::get('/resena/{id}', [ResenaController::class, 'show'])->name('resena');
 
 // Ruta para cerrar sesión
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
