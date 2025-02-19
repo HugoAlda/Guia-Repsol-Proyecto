@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurante;
 use App\Models\Resena;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;  // Para manipular fechas y horas en PHP
 
 class ResenaController extends Controller
 {
@@ -13,44 +14,48 @@ class ResenaController extends Controller
     {
         // Obtener el restaurante por su id
         $restaurante = Restaurante::findOrFail($id);
+        
+        // Convertir la fecha a un objeto Carbon
+        foreach ($restaurante->resenas as $resena) {
+            $resena->fecha_resena = Carbon::parse($resena->fecha_resena);
+        }
+        
+        // Mostrar la vista con los datos del restaurante y las reseñas del mismo
         return view('resena', compact('restaurante'));
     }
 
-    public function valorar(Request $request)
+    public function store(Request $request)
     {
-        // Verificar que el usuario esté autenticado
+        // Verificar si el usuario está autenticado
         if (!Auth::check()) {
-            return response()->json(['success' => false, 'redirect' => route('login')]);
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para dejar una reseña.');
         }
 
-        $user_id = Auth::id();
-        $restaurant_id = $request->restaurant_id;
+        // Validar los datos del formulario
+        $request->validate([
+            'restaurant_id' => 'required|exists:restaurantes,id',
+            'comentario' => 'required|string|max:1000',
+            'valoracion' => 'required|numeric|min:1|max:5',
+        ]);
 
-        // Buscar reseña existente para este usuario y restaurante
-        $resena = Resena::where('id_users', $user_id)
-                        ->where('id_restaurantes', $restaurant_id)
-                        ->first();
+        // Verificar si el usuario ya ha dejado una reseña para este restaurante
+        $existingReview = Resena::where('id_users', Auth::id())
+                                ->where('id_restaurantes', $request->restaurant_id)
+                                ->first();
 
-        if ($resena) {
-            // Actualizar la reseña existente
-            $resena->puntuacion = $request->valoracion;
-            $resena->save();
-        } else {
-            // Crear una nueva reseña
-            Resena::create([
-                'id_users' => $user_id,
-                'id_restaurantes' => $restaurant_id,
-                'puntuacion' => $request->valoracion,
-                'comentario' => '', // Puedes agregar lógica para comentarios si lo requieres
-            ]);
+        if ($existingReview) {
+            return back()->with('error', 'Ya has dejado una reseña para este restaurante.');
         }
 
-        // Actualizar la valoración media del restaurante
-        $media = Resena::where('id_restaurantes', $restaurant_id)->avg('puntuacion');
-        $restaurante = Restaurante::find($restaurant_id);
-        $restaurante->valoracion_media = $media;
-        $restaurante->save();
+        // Crear la reseña
+        Resena::create([
+            'id_users' => Auth::id(),  // Obtener el ID del usuario autenticado
+            'id_restaurantes' => $request->restaurant_id,
+            'comentario' => $request->comentario,
+            'puntuacion' => $request->valoracion,
+            'fecha_resena' => now(),
+        ]);
 
-        return redirect()->back()->with('success', 'Valoración guardada correctamente.');
+        return back()->with('success', '¡Reseña guardada correctamente!');
     }
 }

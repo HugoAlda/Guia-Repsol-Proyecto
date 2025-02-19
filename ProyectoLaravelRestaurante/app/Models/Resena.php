@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Resena extends Model
 {
@@ -11,6 +12,7 @@ class Resena extends Model
 
     protected $table = 'resenas';
     protected $primaryKey = 'id';
+    protected $dates =['fecha_resena'];
 
     protected $fillable = [
         'id_users',

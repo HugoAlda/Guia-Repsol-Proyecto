@@ -38,6 +38,11 @@ class Restaurante extends Authenticatable
         return $this->belongsTo(Provincia::class, 'id_provincia');
     }
 
+    public function resenas()
+    {
+        return $this->hasMany(Resena::class, 'id_restaurantes'); // Relación con Resena
+    }
+
     // Relación muchos a muchos con Tipos de Cocina
     public function tiposCocina()
     {

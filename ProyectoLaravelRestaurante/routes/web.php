@@ -45,3 +45,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
 });
+
+Route::get('/restaurante/{id}', [ResenaController::class, 'show'])->name('restaurante.show'); // Para mostrar el restaurante y sus reseñas
+Route::post('/resena', [ResenaController::class, 'store'])->name('resena.store');
