@@ -1,0 +1,220 @@
+.resena-container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
+    align-items: stretch;
+}
+
+.resena-izquierda {
+    width: 40%;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.resena-nombre {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.resena-valoracion {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.resena-valoracion .star {
+    color: gold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.resena-direccion {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.resena-mapa {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.resena-descripcion {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.resena-derecha {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.resena-imagen {
+    width: 60%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.resena-info {
+    text-align: left;
+    width: 100%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.resena-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.resena-info p span {
+    font-weight: bold;
+}
+
+.containerLogo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    padding: 0 15px;
+    box-sizing: border-box; /* Asegura que padding no afecte el ancho */
+}
+
+.navbar {
+    height: 80px;
+    border-bottom-color: black;
+    border-bottom-width: 0.5px;
+    border-bottom-style: ridge;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* Asegura que padding no afecte el ancho */
+}
+
+.navbar img{
+    width: 15%;
+}
+
+.amarillo{
+    background-color: #fdf7e8;
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    z-index: -1;
+}
+
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star.active {
+    color: gold;
+}
+
+.resena-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido */
+    justify-content: center;
+    width: 50%; /* Ajusta el ancho para centrarlo mejor */
+    margin: 40px auto; /* Margen automático en los lados para centrar */
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.resena-form h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: center; /* Centra las estrellas */
+    margin-bottom: 15px;
+}
+
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
+    margin: 0 5px; /* Espaciado entre estrellas */
+}
+
+.star:hover,
+.star.selected {
+    color: gold;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #e6b800;
+}
+
+/* Sección de reseñas */
+.resena {
+    width: 50%;
+    margin: 20px auto; /* Centra las reseñas */
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.resena p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.resena strong {
+    font-weight: bold;
+}

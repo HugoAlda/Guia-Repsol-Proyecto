@@ -1,0 +1,234 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('../img/background.png');
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center center; /* Centra la imagen tanto horizontal como verticalmente */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Mantiene la imagen fija mientras se desplaza la página */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fondo-difuminado {
+    background-color: #669cff88; /* Color difuminado */
+    width: 100%;
+    height: 100%; /* Ocupa toda la altura del body */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    overflow: hidden; /* Evita que se genere una barra de desplazamiento */
+}
+
+.form {
+    background-color: #0b1741a6;
+    display: flex;
+    flex-direction: row; /* Divide el formulario en dos columnas */
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    height: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-izquierda {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor-izquierda > p {
+    color: white;
+    padding-left: 45px;
+}
+
+.contenedor-izquierda > h1 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}
+
+.contenedor-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-derecha {
+    width: 50%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.cambio {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.cambio-izq, .cambio-der {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.cambio-der {
+    justify-content: flex-end;
+}
+
+.boton-cambio {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.boton-cambio:hover::after {
+    width: 100%;
+}
+
+.boton-cambio::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.boton-cambio.active {
+    color: #007bff;
+}
+
+.boton-cambio.active::after {
+    width: 100%;
+}
+
+.login-register {
+    height: 85%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos específicos para el formulario de login */
+.form-login {
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenedor de las columnas */
+.contenedor-columnas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Estilos para cada columna */
+.registro-izq, .registro-der {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Labels */
+.form-login label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Inputs */
+.form-login input[type="email"],
+.form-login input[type="password"],
+.form-login input[type="text"] {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-login input[type="email"]:focus,
+.form-login input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Botón */
+.form-login button {
+    width: 100%;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-login button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Enlace */
+.form-login .enlace {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.form-login .enlace:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Mensaje de error */
+.form-login .mensaje-error {
+    color: red;
+    margin-top: 0; /* Quita el margen superior */
+    margin-bottom: 10px; /* Espaciado inferior */
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+}
