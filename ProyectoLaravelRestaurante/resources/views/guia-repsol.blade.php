@@ -38,6 +38,10 @@
                 <label for="nombre">Buscar por nombre:</label>
                 <input type="text" id="nombre" name="nombre" value="{{ request('nombre') }}" placeholder="Ej: Restaurante...">
             </div>
+            <div class="filter-group">
+                <label for="precio">Buscar por precio:</label>
+                <input type="number" id="precio" name="precio" value="{{ request('precio') }}" placeholder="Precio medio">
+            </div>
 
             <!-- Filtro por tipo de cocina -->
             <div class="filter-group">
