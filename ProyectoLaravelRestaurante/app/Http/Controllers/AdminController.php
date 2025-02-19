@@ -70,7 +70,7 @@ class AdminController extends Controller
             'valoracion_media' => 'nullable|numeric|min:0|max:5',
             'nombre_gerente' => 'nullable|string',
             'email_gerente' => 'nullable|email',
-            'id_comunidad_autonoma' => 'required|exists:comunidades_autonomas,id',
+            'id_comunidad_autonoma' => 'required|exists:comunidad_autonoma,id',
             'id_provincia' => 'required|exists:provincias,id',
         ];
 
@@ -155,8 +155,8 @@ class AdminController extends Controller
             'valoracion_media' => 'nullable|numeric|min:0|max:5',
             'nombre_gerente' => 'nullable|string',
             'email_gerente' => 'nullable|email',
-            'id_comunidad_autonoma' => 'required|exists:comunidades_autonomas,id',
-            'id_provincia' => 'required|exists:provincias,id',
+            'id_comunidad_autonoma' => 'required|exists:comunidad_autonoma,id',
+            'id_provincia' => 'required|exists:provincia,id',
         ];
 
         // Mensajes de error personalizados para la actualización
