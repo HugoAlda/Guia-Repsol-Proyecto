@@ -19,6 +19,11 @@ class RestauranteController extends Controller
             $query->where('nombre_restaurante', 'like', '%' . $request->nombre . '%');
         }
 
+
+        if ($request->has('precio') && $request->precio) {
+            $query->where('precio_restaurante', 'like', '%' . $request->precio . '%');
+        }
+
         // Filtro por tipo de cocina
         if ($request->has('cocina') && is_array($request->cocina)) {
             $query->whereIn('tipo_cocina', $request->cocina);
