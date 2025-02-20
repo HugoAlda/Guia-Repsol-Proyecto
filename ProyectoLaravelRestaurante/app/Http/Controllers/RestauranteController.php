@@ -38,6 +38,14 @@ class RestauranteController extends Controller
             $query->whereIn('id_comunidad_autonoma', $request->comunidad);
         }
 
+        // Filtro por precio medio
+        $precioFiltro = $request->input('precio_medio');
+        if (!empty($precioFiltro)) {
+            list($minPrecio, $maxPrecio) = explode('-', $precioFiltro);
+            $query->whereBetween('precio_restaurante', [(float)$minPrecio, (float)$maxPrecio]);
+        }
+
+
         // Obtener los restaurantes filtrados
         $restaurantes = $query->orderByDesc('valoracion_media')->get();
 

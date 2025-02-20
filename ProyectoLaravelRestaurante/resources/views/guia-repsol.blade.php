@@ -40,7 +40,7 @@
             </div>
 
             <!-- Filtro por tipo de cocina -->
-            <div class="filter-group">
+            {{-- <div class="filter-group">
                 <label>Tipo de cocina:</label>
                 {{-- @foreach ($tiposCocina as $tipo)
                     <label>
@@ -49,7 +49,7 @@
                         {{ $tipo }}
                     </label>
                 @endforeach --}}
-            </div>
+            {{-- </div> --}}
 
             <!-- Filtro por valoraciones -->
             <div class="filter-group">
@@ -73,6 +73,17 @@
                             {{ $nombre }}
                         </option>
                     @endforeach
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Precio Medio</label>
+                <select name="precio_medio" class="form-control">
+                    <option value="">Precio medio</option>
+                    <option value="20-100" {{ request()->input('precio_medio') == '20-100' ? 'selected' : '' }}>20€ - 100€</option>
+                    <option value="100-200" {{ request()->input('precio_medio') == '100-200' ? 'selected' : '' }}>100€ - 200€</option>
+                    <option value="200-300" {{ request()->input('precio_medio') == '200-300' ? 'selected' : '' }}>200€ - 300€</option>
+                    <option value="300-1000000" {{ request()->input('precio_medio') == '300-1000000' ? 'selected' : '' }}>+300€</option>
                 </select>
             </div>
 
