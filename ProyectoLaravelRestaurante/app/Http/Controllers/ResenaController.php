@@ -14,6 +14,13 @@ class ResenaController extends Controller
     {
         // Obtener el restaurante por su id
         $restaurante = Restaurante::findOrFail($id);
+
+        // Calcular la media de las puntuaciones de todas las reseñas asociadas
+        $nuevaMedia = round($restaurante->resenas()->avg('puntuacion'), 3);
+    
+        // Actualizar la valoración media en la base de datos
+        $restaurante->valoracion_media = $nuevaMedia;
+        $restaurante->save();
         
         // Convertir la fecha a un objeto Carbon
         foreach ($restaurante->resenas as $resena) {
