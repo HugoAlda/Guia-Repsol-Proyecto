@@ -33,7 +33,7 @@
                     <input type="text" name="nombre_restaurante" class="form-control"
                         placeholder="Filtrar por nombre restaurante" value="{{ request()->input('nombre_restaurante') }}">
                 </div>
-                <div class="col-md-3 valoracion-filter">
+                <div class="col-md-2 valoracion-filter">
                     <label>Valoraciones:</label>
                     @for ($i = 1; $i <= 5; $i++)
                         <label>
@@ -43,7 +43,7 @@
                         </label>
                     @endfor
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <select name="id_comunidad_autonoma" class="form-control">
                         <option value="">Comunidad Autónoma</option>
                         @foreach ($comunidades as $comunidad)
@@ -54,7 +54,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <select name="id_provincia" class="form-control">
                         <option value="">Provincia</option>
                         @foreach ($provincias as $provincia)
@@ -65,9 +65,21 @@
                         @endforeach
                     </select>
                 </div>
+                {{-- Filtro para el precio medio --}}
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
-                    <a href="{{ route('admin.index') }}" class="btn btn-secondary">Limpiar Filtros</a>
+                    <select name="precio_medio" class="form-control">
+                        <option value="">Precio medio</option>
+                        <option value="20-100" {{ request()->input('precio_medio') == '20-100' ? 'selected' : '' }}>20€ - 100€</option>
+                        <option value="100-200" {{ request()->input('precio_medio') == '100-200' ? 'selected' : '' }}>100€ - 200€</option>
+                        <option value="200-300" {{ request()->input('precio_medio') == '200-300' ? 'selected' : '' }}>200€ - 300€</option>
+                        <option value="300-1000000" {{ request()->input('precio_medio') == '300-1000000' ? 'selected' : '' }}>+300€</option>
+                    </select>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                        <a href="{{ route('admin.index') }}" class="btn btn-secondary">Limpiar Filtros</a>
+                    </div>
                 </div>
             </div>
         </form>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ComunidadAutonoma;
 use App\Models\Provincia;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -40,7 +41,13 @@ class AdminController extends Controller
 
     // Filtrar por valoraciones si se seleccionan
     if (!empty($valoraciones)) {
-        $restaurantes->whereIn('valoracion_media', $valoraciones);
+        $restaurantes->whereIn(DB::raw('ROUND(valoracion_media)'), $valoraciones);
+    }
+
+    $precioFiltro = $request->input('precio_medio');
+    if (!empty($precioFiltro)) {
+        list($minPrecio, $maxPrecio) = explode('-', $precioFiltro);
+        $restaurantes->whereBetween('precio_restaurante', [(float)$minPrecio, (float)$maxPrecio]);
     }
 
     // Obtener los resultados filtrados
